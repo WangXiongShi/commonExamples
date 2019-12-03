@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style type="text/css">
+		#box{
+			margin: 0px auto;
+            width: 400px;
+            height: 600px;
+            border: 1px solid black;
+            overflow: hidden;
+			position: relative;
+			background: #e4e4e4;
+		}
+		#main{
+            width: 400px;
+            height: 600px;
+            position: absolute;
+            top:-150px;
+            left:0;
+		}
+		#main>div{
+			width: 400px;
+			height: 150px;
+		}
+		#main>div>div{
+			width: 100px;
+			height: 150px;
+			border:1px solid black;
+			box-sizing: border-box;
+			float:left;
+		}
+		.box{
+			width: 280px;
+			margin:10px auto;
+		}
+		#btn{
+			position: absolute;
+			top:510px;
+			right:40px;
+			width: 50px;
+			height: 50px;
+			/*border:1px solid #ccc;*/
+		}
+		#count{
+			position: absolute;
+			top:1px;
+			right:24px;
+			width: 40px;
+			height: 40px;
+			border-radius:50%;
+			background-color: transparent;
+			z-index: 20;
+			text-align: center;
+			line-height: 40px;
+			animation-name: move;
+            animation-duration: 1s;
+            animation-direction: alternate;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+            display: none;
+            font-weight: bold;
+		}
+		#box .count{
+		    top: 300px;
+		    right: 272px;
+		    width: 56px;
+		    height: 56px;
+		    line-height: 56px;
+			background-color: #e4e4e4;
+		}
+        @keyframes move{
+            0%{
+                transform: rotateZ(45deg);
+            }
+            100%{
+                transform: rotateZ(-45deg);
+            }
+        }
+		img{
+			width: 400px;
+            height: 600px;
+            position: absolute;
+            top:0;
+            left:0;
+		}
+		.img2{
+			display: none;
+			z-index: 10;
+		}
+		p{
+			margin:9px auto;
+			width: 400px;
+			text-align: center;
+			font-size: 30px;
+			font-family: '楷体';
+			font-weight: bold;
+		}
+		section{
+			width: 999px;
+			height: 300px;
+			position: absolute;
+			top:20px;
+			left:200px;
+			color:black;
+			font-weight: bold;
+		}
+		span{
+			font-size: 30px;
+			color:pink;
+			font-family: '楷体';
+		}
+	</style>
+</head>
+<body>
+	<!-- 弹幕 -->
+	<section>
+		<marquee behavior="" direction="">我爱学习</marquee>
+		<marquee behavior="" direction="">感谢<span>薛郁梅</span>大神对菜鸟白隐杰的鼎力相助!!!</marquee>
+	</section>
+	<!-- 总盒子 -->
+	<div id="box">
+		<img src="img/1.jpg" alt="" class="img1">
+		<img src="img/2.jpg" alt="" class="img2">
+		<div id="main"></div><!-- 内容 -->
+		<div id="btn"></div><!-- 开始按钮 -->
+		<div id="count"></div><!-- 分数 -->
+	</div>
+	<p>独孤求败</p>
+	
+	<script type="text/javascript">
+		var btn = document.querySelector('#btn');
+		var main = document.querySelector('#main');
+		var count = document.querySelector('#count');
+		var img1 = document.querySelector('.img1');
+		var img2 = document.querySelector('.img2');
+		// 定义定时器
+		var timer = null;
+		// 定义默认速度
+		var speed = 2;
+		// 定义最小div
+		var sdiv = null;
+		// 定义分数
+		var counts = 0;
+
+		//获取当前样式
+	    function getStyle(obj, arrt) {
+	        //currentStyle是IE浏览器的一个属性，返回的是CSS样式对象
+	        return obj.currentStyle ? obj.currentStyle[arrt] : getComputedStyle(obj, null)[arrt];
+	        //getComputedStyle是一个可以获取当前元素所有最终使用的CSS属性值
+	    }
+
+		// 方块移动定时器
+		function move(){
+			// 清除定时器
+			clearInterval(timer);
+			// 定时器
+			timer = setInterval(function(){
+				// 位移
+				step = parseInt(getStyle(main, 'top')) + speed;
+				main.style.top = step + 'px';
+				if (step >= 0) {
+					cDiv();
+					main.style.top = -150 + 'px';
+				}
+			},15)
+		}
+
+		// 创建div
+		function cDiv(){
+			// 动态创建行div
+			var div = document.createElement('div');
+			// 随机黑块
+			var rand = Math.floor(Math.random() * 4);
+			for (var i = 0; i < 4; i++) {
+				// 动态创建四个小div
+				sdiv = document.createElement('div');
+
+				if (rand == i) {
+					sdiv.style.backgroundImage = 'url(img/1.png)';
+					sdiv.className = 'black';
+				}
+				div.appendChild(sdiv);
+				sdiv.onclick = function(){
+					if (this.className == 'black') {
+						this.style.backgroundImage = 'url(img/2.png)';
+						this.className = '';
+						counts += 10;
+						count.innerHTML = counts;
+					}else{
+						clearInterval(timer);
+						img2.style.display = 'block';
+						count.className = 'count';
+						// alert('Game Over');
+					}
+
+					if (counts % 100 == 0 && counts != 0) {
+						console.log(123)
+						speed += 0.5;
+					}
+				}
+			}
+			main.insertBefore(div, main.firstChild);
+			if (main.children.length > 5) {
+				// console.log(1);
+				for (var i = 0; i < 4; i++) {
+					if (main.lastChild.children[i].className === 'black') {
+						clearInterval(timer);
+						img2.style.display = 'block';
+						count.className = 'count';
+						// alert('Game Over');
+						break;
+					}
+				}
+				main.removeChild(main.lastChild);
+			}
+		}
+
+		btn.onclick = function(){
+        	//开始前判断main里面是否有盒子，有则全部删除
+	        if (main.children.length) {
+	            //清除main里面所有盒子
+	            main.innerHTML = '';
+	        }
+	        img1.style.display = 'none';
+	        count.style.display = 'block';
+	        //清空计分
+	        count.innerHTML = '';
+	        counts = 0;
+	        //调用定时器
+	        move();
+    	}
+	</script>
+</body>
+</html>

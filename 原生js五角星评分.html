@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<title>无标题文档</title>
+<style type="text/css" >
+
+#warp li{
+float:left;
+list-style:none;
+margin:5px;
+color: yellow;
+}
+
+</style>
+</head>
+
+<body>
+<div id="warp">
+<ul>
+  <li>☆</li>
+  <li>☆</li>
+  <li>☆</li>
+</ul>
+</div>
+<script type="text/javascript" >
+    // var oWarp=document.getElementById("warp");
+    var oLis=document.querySelectorAll("#warp li");
+    for(var i=0;i<oLis.length;i++){
+        var oLi=oLis[i];
+        oLi.style.cursor ='pointer';
+        oLi.onmouseover=function(){
+
+        var index = indexof(oLis, this); 
+            for(var j=0;j<=index;j++){
+                oLis[j].innerHTML="★";
+            }
+            for(var z=index+1;z<oLis.length;z++){
+                oLis[z].innerHTML="☆";
+            }
+        }
+    }
+    function indexof(arr,element){
+        for(var i=0;i<arr.length;i++){
+            if(arr[i]==element)
+            return i;
+        }
+
+    }
+</script>
+
+</body>
+</html>

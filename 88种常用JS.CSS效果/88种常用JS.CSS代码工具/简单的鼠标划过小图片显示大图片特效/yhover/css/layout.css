@@ -1,0 +1,22 @@
+*{margin:0;padding:0;}
+body{background:#FFF;color:#000;text-align:center;font:normal 12px Georgia, Arial, Helvetica, sans-serif;}
+a:link,a:visited{color:#369;text-decoration:underline;}
+a:hover{color:#C80000;text-decoration:none;}
+span,li,dt,dd,p,h1,h2,h3,h4,h5,h6{text-align:left;}
+img{border:0;}
+ul,li{list-style-type:none;}
+p{padding:5px 0;line-height:150%;}
+
+h1{margin:0 auto;width:100%;background:#353535 url(../img/logo.gif) 0 0 no-repeat;font-size:28px;height:60px;color:#FFF;line-height:60px;text-indent:60px;overflow:hidden;border-bottom:3px solid #999;}
+#container{margin:20px auto;width:625px;overflow:hidden;border:1px solid #999;padding:5px;}
+
+#samples{float:left;width:100%;overflow:hidden;}
+#samples li{float:left;width:115px;margin:5px;display:inline;overflow:hidden;}
+#samples li img{width:115px;height:50px;}
+#samples li p{margin:0 auto;padding:0;line-height:26px;width:100%;text-align:center;font-size:12px;height:26px;overflow:hidden;}
+
+#overlayer{position:absolute;z-index:200;width:460px;height:200px;padding:3px;border:2px solid #999;background-color:#FFF;}
+#overlayer img{width:460px;height:200px;}
+
+#footer{margin:0 auto;width:960px;padding:15px 0;overflow:hidden;border-top:1px solid #999;}
+#footer p{margin:0 auto;width:960px;line-height:20px;font-family:Georgia,sans-serif;text-align:center;font-size:14px;}

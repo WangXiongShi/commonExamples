@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+    <!-- <label> 标签为 input 元素定义标注（标记）。
+  label 元素不会向用户呈现任何特殊效果。不过，它为鼠标用户改进了可用性。如果您在 label 元素内点击文本，就会触发此控件。就是说，当用户选择该标签时，浏览器就会自动将焦点转到和标签相关的表单控件上。
+  <label> 标签的 for 属性应当与相关元素的 id 属性相同。 -->
+  <!-- 注释："for" 属性可把 label 绑定到另外一个元素。请把 "for" 属性的值设置为相关元素的 id 属性的值。 -->
+    <div class="box" style="width:80px;">
+      <p><label for="all">全选<input type="checkbox" id="all"></label></p>
+      <p>苹果<input type="checkbox" name="vegetable"></p>
+      <p>三星<input type="checkbox" name="vegetable"></p>
+      <p>小米<input type="checkbox" name="vegetable"></p>
+      <p><label for="alla">全选<input type="checkbox" id="alla"></label></p>
+    </div>
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        var all = document.getElementById('all');
+         var alla = document.getElementById('alla');
+        var opts = document.getElementsByName('vegetable');
+
+        // opts[0].checked = true;
+
+        all.onclick = function(){
+          console.log(all.checked);
+          for(var i = 0;i < opts.length;i++){
+            opts[i].checked = all.checked;
+          }
+        }    //将全选框的checked状态循环遍历给每个子项
+        alla.onclick = function(){
+          console.log(alla.checked);
+          for(var i = 0;i < opts.length;i++){
+            opts[i].checked = alla.checked;
+          }
+        }    
+    </script>
+</body>
+</html>

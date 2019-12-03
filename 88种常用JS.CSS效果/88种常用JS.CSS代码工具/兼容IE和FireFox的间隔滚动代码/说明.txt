@@ -1,0 +1,2 @@
+把滚动内容放在   <div id="scrollmessage"> </div>里面！
+复制此代码到空白html文档中，在firefox/ie/opear上测试！ 

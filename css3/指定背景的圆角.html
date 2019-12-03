@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>背景元素圆角</title>
+	<style type="text/css">
+		*{
+			margin:0px;
+			padding:0px;
+		}
+		.box{
+			width: 200px;
+			height: 200px;
+			background-color:red;
+			border-radius:20px;
+			margin:0px auto;
+			/*给背景为红色的块设置圆角为20像素的圆角*/
+		}
+		h1{
+			text-align:center;
+		}
+		h1 a{
+
+			text-decoration-color:#fff;
+			/*文本下划线颜色:   白色*/
+		}
+		.box1{
+			width: 600px;
+			/*宽度可以不写,因为默认为百分之百*/
+			height: 600px;
+			background-image:url(images/226877.jpg);
+			border-radius:100px;
+			/*给图片设置圆角为100像素*/
+			padding:100px;
+			/*给背景图上下左右都填充100像素*/
+			background-position:left top;
+		}
+		.box2{
+			width: 200px;
+			height: 150px;
+			background:url(images/lj1224bz42.jpg);
+			padding:20px;
+			border-radius:50%;
+			/*给长方形设置圆角为百分之五十的时候,会变为椭圆*/
+		}
+	</style>
+</head>
+<body>
+	<section class="box">
+		<h1>
+			<a href="">圆角</a>
+		</h1>
+	</section>
+	<section class="box1">
+		<!-- <img src="images/壁纸 (105).jpg"> -->
+	</section>
+	<section class="box2">
+		
+	</section>
+</body>
+</html>

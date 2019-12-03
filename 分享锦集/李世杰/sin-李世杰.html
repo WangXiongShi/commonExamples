@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		#block{
+			width: 50px;
+			height: 50px;
+			position: fixed;
+			left: 200px;
+			top: 200px;
+			background: blueviolet;
+			transform: translate(-50%,-50%);
+		}
+		div{
+			width: 1px;
+			height: 1px;
+			background: red;
+			position: absolute;
+		}
+	</style>
+</head>
+<body>
+	<div id="block"></div>
+	<script type="text/javascript">
+		var block = document.querySelector('#block');
+		var deg = 0;  //角度从零开始
+		// 运动方向,初始为正向
+		var direct = 1;
+		// 初始速度1
+		var speed = 1;
+
+		// 定义一个开关,来控制运动方向(初始让他开着)
+		var bol = true;
+		var timer = setInterval(function(){
+			// X轴度数
+			var x = deg;
+			// 计时器持续改变弧度制
+			// 方向*度数  来控制方向
+			// deg += direct * speed;
+			deg += direct * speed;
+
+			// sin曲线运动         角度 * PI / 180
+			var y = 100 * Math.sin(deg * Math.PI / 180);
+			// 根据x,y的值来进行定位
+			// x,y的初始定位值都为200;
+			block.style.left = x + 200 + 'px';
+			block.style.top = y + 200 + 'px';
+			// 通过添加div hua线
+			if(bol){
+			// 	// 当画好运动曲线停止划线
+				var div = document.createElement('div');
+				div.style.background = 'red';
+				div.style.left = x + 200 + 'px'
+				document.body.appendChild(div);;
+				div.style.top = y + 200 + 'px';
+			}
+			// 正向运动完毕后改变div的css样式,并改变运动方向
+			if(x == 720){
+				// 运动执行完正向,改变方向
+				direct = -1;
+				// 关闭划线开关
+				bol = false;
+				// 改变css样式
+				block.style.width = '100px';
+				block.style.height = '100px';
+				block.style.borderRadius = 0 + 'px';
+				// 随机一个背景色
+				block.style.background = 'rgb('+randFn(0,255) +' ,' + randFn(0,255)+','+ randFn(0,255) +')';
+			}else if(x == 0){
+				// 反方向执行完,改变方向
+				direct = 1;
+				// 改变css样式
+				block.style.width = '50px';
+				block.style.height = '50px';
+				block.style.borderRadius = 50 + 'px';
+				block.style.background = 'rgb('+randFn(0,255) +' ,' + randFn(0,255)+','+ randFn(0,255) +')';
+			}
+		},2)
+		// 随机函数
+		function randFn(max,min){
+			var rand = Math.random() * (max - min + 1) + min;
+			return parseInt(rand);
+		}
+	</script>
+		<!-- <span style="font-family:Microsoft YaHei;font-size:18px;"><script>  
+		var a = 10;  
+		function test() {  
+		    a = 100;  
+		    console.log(a); 
+		    // console.log(this); 
+		    console.log(this.a);
+		    var a;  
+		    console.log(a);  
+		}  
+		test();  
+		console.log(a);  
+		</script>  
+	</span>   -->
+</body>
+</html>

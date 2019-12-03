@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>danny的微博 - 留言板</title>
+	<link rel="icon" type="image/x-icon" href="img/微博.png">
+	<link rel="stylesheet" type="text/css" href="reset.css">
+	<style type="text/css">
+		.b_box{
+			width: 500px;
+			height: 550px;
+			background: url(img/3.jpg) no-repeat;
+			background-size: 500px 900px;
+			border-radius: 30px;
+			margin: 50px auto;
+			overflow: hidden;
+		}
+
+		.kuang{
+			margin-left: 60px;
+			padding-top: 90px;
+			line-height: 40px;
+			color: #777;
+			position: relative;
+		}
+		#inp1{
+			width: 380px;
+			height: 30px;
+			font-size: 14px;
+			text-align: center;
+		}
+		#inp2{
+			width: 380px;
+			height: 50px;
+			font-size: 14px;
+			text-align: center;
+		}
+		img{
+			width: 45px;
+			height: 45px;
+			margin-left: 150px;
+			margin-top: 30px;
+		}
+		p{
+			position: absolute;
+			top: 10px;
+			left: 120px;
+			font-size: 25px;
+			font-weight: bold;
+			color: #f26baf;
+			font-family: 'youyuan';
+		}
+	</style>
+</head>
+<body>
+	<div class="b_box">
+		<div class="kuang">
+			<p>我的留言板</p>
+			昵称: <br/><input type="text" name="" id="inp1"><br/>
+			留言: <br/><input type="text" name="" id="inp2" ><br/>
+			<a href="#" id="btn"><img src="img/纸飞机.png" title="点击发送~"></a>
+			<ul id="uls"></ul>
+		</div>
+	</div>
+	<script type="text/javascript">
+	var inp1 = document.querySelector("#inp1"); // 获取inp1
+	var inp2 = document.querySelector("#inp2"); // 获取inp2
+	var fs = document.querySelector("#btn"); // 获取发送按钮
+    var uls = document.querySelector("#uls"); // 获取ul
+    btn.onclick = function(){ // 给btn添加点击事件
+    	if (inp1.value == '' || inp2.value == '') { // 如果inp1和inp2的value值等于null
+    		alert('跟我说点什么嘛'); // 提醒弹框
+    	}else{
+    		var li = document.createElement(li); // 动态创建li
+    		// li的内容 = inp1 + inp2的value
+    		li.innerHTML = '<span>' + inp1.value + ' 想对你说' + '</span>'+ ' :　' + '<span>' + inp2.value + '<a href = "#">　删除</a>' + '</span>' + '<br/>'
+    		uls.insertBefore(li,uls.children[0]); // 给ul插入一个li,并且下标永远为0
+    		inp1.value = ''; // 发送后清空inp值
+    		inp2.value = '';
+    	}
+    	var del = document.querySelectorAll("ul span a"); // 获取删除按钮
+	    for(var i = 0; i < del.length; i++){ // 遍历删除按钮
+	    	del[i].onclick = function(){ // 给删除按钮添加点击事件
+	    		uls.removeChild(this.parentNode.parentNode);
+	    	}
+	    }
+    }
+	</script>
+</body>
+</html>

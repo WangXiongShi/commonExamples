@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>test</title>
+<style type="text/css">
+body, ul,li,div, img{ margin:0; padding:0; border:0; font:11px Arial, Helvetica, sans-serif; color:#003063}
+ul,li{ list-style:none}
+a:link,a:visited{color:#003063; text-decoration:none}
+a:hover{color:#003063; text-decoration:underline}
+a:active{color:#003063; text-decoration:none}
+body{ margin-left:200px; margin-top:50px}
+.news_list{ width:350px; padding-bottom:12px; float:left}
+.news_list li{ padding-left:15px; line-height:24px;overflow:hidden; height:24px; font-size:14px; background:#FFF; }
+.news_list li.selected{border:1px solid #BDBEBD; border-left:1px solid #fff; height:22px;  margin-left:-1px; position:relative;}
+.news_list li.selected a{color:red;}
+.news_info{ float:left; width:510px;overflow:hidden; position:relative; height:346px; border:1px solid silver;}
+.news_info #picNav img{float:left;}
+.news_info #picNav{overflow:hidden; height:342px; position:absolute; width:3060px; border:1px solid red;}
+.btn{ width:40px; height:20px;background:#FFF; opacity:0.7; filter:alpha(opacity=70); display:block; text-align:center; position:absolute; bottom:20px; line-height:20px; font-size:14px;}
+.btn:hover{background:red;}
+.l{ right:80px}
+.r{ right:30px}
+</style>
+<script type="text/javascript">
+</script>
+</head>
+<body>
+<div class="news_info" id="info">
+	<div id="picNav">
+		<img src="http://www.blueidea.com/articleimg/2008/01/5257/01.jpg"/>
+		<img src="http://www.blueidea.com/articleimg/2008/01/5257/02.jpg"/>
+		<img src="http://www.blueidea.com/articleimg/2008/01/5257/03.jpg"/>
+		<img src="http://www.blueidea.com/articleimg/2008/01/5257/04.jpg"/>
+		<img src="http://www.blueidea.com/articleimg/2008/01/5257/05.jpg"/>
+		<img src="http://www.blueidea.com/articleimg/2008/01/5257/03.jpg"/>
+	</div>
+	<a href="javascript:void(0)" class="btn l" id="toleft">&lt;&lt;</a>
+	<a  href="javascript:void(0)" class="btn r" id="toright">&gt;&gt;</a>
+</div>
+<ul class="news_list" id="news_list">
+	<li class="selected"><a href="#">当遇上不归路，你是从容面对还是放弃？</a></li>
+	<li><a href="#">我控制不了别人的情绪，但我可以控制着我的微笑... ...</a></li>
+	<li><a href="#">好事总是多磨，让多磨的坏事成为我们回忆的点滴... ... </a></li>
+	<li><a href="#">让我们2008遇见幸福...</a></li>
+	<li><a href="#">呵呵，来自diginon的图片。意境很好。</a></li>
+	<li><a href="#">链接地址是http://www.blueidea.com/photo/gallery/2008/5257.asp</a></li>
+</ul>
+</body>
+<script>
+var $ = function(_){return typeof(_)=="string"?document.getElementById(_):null;}
+var EACH = function(o,fn){for(var i=0;i<o.length;i++){fn.call(o[i],i,o); if(i==o.length-1) return o}}//遍历
+function CG(t,b,c,d,s){s||(s = 1.70158); return (t/=d/2) < 1? c/2*(t*t*(((s*=(1.525))+1)*t-s))+b:c/2*((t-=2)*t*(((s*=(1.525))+1)*t + s) + 2)+b;}
+var picNav = $("picNav"), H = 510, total=6,num=0,timer=null,pause=2000,finish=false;
+function PLAY(o,f,t){ //o:element,f:from,t:to,d:duration
+	var tim=0,timHander=null,d=100;
+	void function(){
+		picNav.style.left = Math.ceil(CG(tim,f,t-f,d)) + "px";
+		tim<d ? (tim++ , finish=false, timHander=setTimeout(arguments.callee, 10)):clearTimeout(timHander);
+		finish=(tim==d?true:false);
+	}();	
+}
+function GOGOGO(){
+	num > (total-1)?(PLAY(picNav,-total*H,0),num=0):PLAY(picNav,-num*H,-(num+1)*H);
+	setSelect(num); num++;
+	timer = setTimeout(arguments.callee,pause);
+}
+function go(dir){
+	var M = parseInt(picNav.style.left);clearTimeout(timer);
+	if(dir == -1){ if(num <=0)return; PLAY(picNav,M,M+H);}
+	if(dir == 1){ if(num >= total-1) return; PLAY(picNav,M,M-H)}
+	num +=dir;
+	setSelect(num);
+	timer = setTimeout("GOGOGO()",pause);
+}
+function setSelect(n){
+	EACH($("news_list").getElementsByTagName("li"),function(i,o){
+		this.className = (i==n?"selected":"");
+	});
+}
+GOGOGO();
+$("toleft").onmouseover = $("toright").onmouseover = function(){clearTimeout(timer)}
+$("toleft").onclick = function(){finish && go(-1);}
+$("toright").onclick = function(){finish && go(1);}
+</script>
+</html>

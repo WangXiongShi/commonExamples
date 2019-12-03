@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css">
+	<style>
+		#mb{
+			background-color: rgba(64, 64, 64, 0.5);
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+		.wrap{
+			width: 420px;
+			height: 150px;
+			position: relative;
+			left: 50%;
+			transform: translateX(-50%);
+			background-color: #E74C3C;
+			color: white;
+		}
+		.wrap button, input{
+			width: 70px;
+			height: 30px;
+			border: 0px;
+			background-color: #c0392b;
+			position: absolute;
+			color: white;
+		}
+		.wrap h5{
+			font-size: 25px;
+			position: absolute;
+			left: 12%;
+		}
+		.wrap button:hover, input:hover{
+			background-color: #A5281B;
+		}
+		#yes{
+			right: 85px;
+			bottom: 10px;
+		}
+		#no{
+			right: 10px;
+			bottom: 10px;
+			transition: 0.3s;
+		}
+		#close{
+			position: absolute;
+			top: 10px;
+			right: 10px;
+			font-size:24px;
+			color: #A5281B;
+			cursor: pointer;
+		}
+		#closeWrap{
+			width: 100%;
+    		height: 100%;
+    		font-size: 18px;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			background-color: #E84C3D;
+			display: none;
+			padding: 20px 20px;
+			box-sizing: border-box;
+		}
+		#closeWrap input{
+			left: 50%;
+			bottom: 20px;
+			transform: translateX(-50%);
+		}
+	</style>
+</head>
+<body>
+	<div id="mb"></div>
+	<div class="wrap">
+		<h5>你是不是喜欢我？</h5>
+		<button id="yes">是</button>
+		<button id="no">不是</button>
+		<i class="fa fa-close" id="close"></i>
+		<section id="closeWrap">
+			<p></p>
+			<input type="button" value="确认" id="cw_btn">
+		</section>
+	</div>
+	<script> 
+		var mb = document.querySelector('#mb');
+		var yes = document.querySelector('#yes');
+		var no = document.querySelector('#no');
+		var close = document.querySelector('#close');
+		var closeWrap = document.querySelector('#closeWrap');
+		var cw_btn = document.querySelector('#cw_btn');
+		var count = 0;
+		no.onmouseenter = function(){
+			count++;
+			switch(count){
+				case 1:
+					this.style.bottom = 75 + 'px';
+					break;
+				case 2:
+					this.style.bottom = '';
+					break;
+				default://当所有条件都不成立时,执行default语句
+					this.innerHTML = '是';
+					yes.innerHTML = '不是';
+					break;
+			}
+			changeTxt();
+		}
+		yes.onmouseenter = function(){
+			if (this.innerHTML == '不是') {
+				this.innerHTML = '是';
+				no.innerHTML = '不是';
+			}
+			changeTxt();
+		}
+		no.onclick = function(){
+			ww(this);
+		}
+		yes.onclick = function(){
+			ww(this);
+		}
+
+		function ww(obj){
+			if (obj.innerHTML == '不是') {
+				closeWrap.style.display = 'block';
+				closeWrap.children[0].innerHTML = '千方百计地说不是也掩饰不了你喜欢我的事实';
+			} else if (obj.innerHTML == '是') {
+				closeWrap.style.display = 'block';
+				closeWrap.children[0].innerHTML = '乖乖承认不就好啦 O(∩_∩)O';
+			}
+			console.log(obj);
+		}
+		close.onclick = function(){
+			closeWrap.style.display = 'block';
+			closeWrap.children[0].innerHTML = '关闭窗口也改变不了你喜欢我的事实';
+		}
+		cw_btn.onclick = function(){
+			closeWrap.style.display = 'none';
+		}
+		function changeTxt(){
+			if (this.innerHTML == '不是') {
+				this.onclick = function(){
+					closeWrap.style.display = 'block';
+					closeWrap.children[0].innerHTML = '千方百计地说不是也掩饰不了你喜欢我的事实';
+				}
+			} else if (this.innerHTML == '是') {
+				this.onclick = function(){
+					closeWrap.style.display = 'block';
+					closeWrap.children[0].innerHTML = '乖乖承认不就好啦 O(∩_∩)O';
+				}
+			}
+		}
+	</script>
+</body>
+</html>

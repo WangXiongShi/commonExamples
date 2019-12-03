@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	 <style>
+    body{
+        background-color: pink;
+    }
+    #wrap{
+        height: 200px;
+        width: 0px;
+        border-radius: 50%;
+        border-left: 100px solid #fff;
+        border-right: 100px solid black;
+        position: relative;
+        /*transition-duration: 1s;*/
+    }
+    #wrap::before{
+    	content: "";
+    	width: 100px;
+    	height: 100px;
+    	position: absolute;
+    	left: -50px;
+    	top:0px;
+    	background-color: #fff;
+    	border-radius: 50%;
+    	box-shadow: 0px 100px 0px black;
+    }
+    #wrap::after{
+		content: "";
+		width: 25px;
+		height: 25px;
+		position: absolute;
+		left: -20px;
+		top:40px;
+		background-color: black;
+		border-radius: 50%;
+	  	box-shadow: 0 100px 0 #fff;
+    }
+    </style>
+</head>
+<body>
+<div id="wrap"></div>
+<script type="text/javascript">
+	var box = document.querySelector("#wrap");
+	var i = 0;
+	setInterval(function(){
+		i++;
+		box.style.transform = 'rotateZ('+ i +'deg)';
+	},10)
+</script>
+</body>
+</html>

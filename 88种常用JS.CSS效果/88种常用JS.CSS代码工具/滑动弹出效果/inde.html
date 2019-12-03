@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>Popup</title>
+<style>
+* { font-size:12px; font-family:Verdana,宋体; }
+html { margin:0px; padding:0px; overflow:auto; }
+body { margin:0px; padding:15px; background-color:buttonface; }
+#w { position:absolute; width:1px; height:1px; overflow:hidden; border:2px groove #281; cursor:default; -moz-user-select:none; }
+#t { line-height:20px; height:20px; width:480px; overflow:hidden; background-color:#27C; color:white; font-weight:bold; border-bottom:1px outset blue; text-align:center; }
+#winBody { height:248px; width:480px; overflow-x:hidden; overflow-y:auto; border-top:1px inset blue; padding:10px; text-indent:10px; background-color:white; }
+</style>
+</head>
+<body>
+<div id="w">
+	<div id="t">Demo Win - Popup</div>
+	<div id="winBody">Hello world</div>
+</div>
+</body>
+<script>
+(function(o,t,i,j,s){
+	i=j=1;s=o.style;
+	t=setInterval(function(){
+		o.offsetWidth<480?(s.width=(482-600/++i<<0)+"px"):(o.offsetHeight<270?s.height=(272-400/++j<<0)+"px":clearInterval(t));
+	},15);
+})(document.getElementById("w"));
+</script>
+</html>

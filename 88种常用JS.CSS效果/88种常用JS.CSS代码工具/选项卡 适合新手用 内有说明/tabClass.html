@@ -1,0 +1,171 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>无标题文档</title>
+<link href="css/thd.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/thd.js"></script>
+<script type="text/javascript">
+window.onload = function(){
+	var tabPage = new TabPage("dc");
+	tabPage.setTabPDivCss("padding:5px;border:1px solid #CCCFFF;");//最外层框架样式
+	tabPage.setTabObj([{title:"1",id:"a"},{title:"2",id:"b"},{title:"3",id:"c"},{title:"4",id:"d"},{title:"5",id:"k"}]);//增加选项菜单
+	tabPage.addedTo("x");
+
+
+	var tabPage = new TabPage("dcc");	
+	tabPage.setTabPDivCss("padding:5px;border:1px solid #CCC;background:#eee;");
+	tabPage.setTabObj([{title:"11",id:"a1"},{title:"21",id:"b1"},{title:"31",id:"c1"},{title:"41",id:"d1"}]);
+	tabPage.addedTo("y");
+	
+	var tabPage = new TabPage("dac");
+	tabPage.setTabPDivCss("padding:5px;border:1px solid #CCCFFF;");//最外层框架样式
+	tabPage.setTabObj([{title:"21",id:"aa"},{title:"22",id:"ab"},{title:"23",id:"ac"},{title:"24",id:"ad"},{title:"25",id:"ak"}]);//增加选项菜单
+	tabPage.addedTo("o");
+	//复制此段代码即可增加选项卡块TabPage内名称必需不与其他不同
+}
+
+</script>
+</head>
+
+<body>
+<h1>预览效果</h1>
+
+<div id="x" style="float:left;width:500px;margin-right:10px;"></div>
+<div id="y" style="width:400px;float:right;margin-left:10px;"></div>
+<div id="o" style="width:500px;float:right;margin-left:10px;"></div>
+
+<div id="a1" style="float:left">a1</div>
+<div id="b1" style="float:right">b1</div>
+<div id="c1">c1</div>
+<div id="d1">d1</div>
+
+<div id="a">a</div>
+<div id="b">b</div>
+<div id="c">c</div>
+<div id="d">d</div>
+<div id="k">fdsfafd</div>
+
+<div id="aa">a</div>
+<div id="ab">b</div>
+<div id="ac">c</div>
+<div id="ad">d</div>
+<div id="ak">fdsfafd</div>
+
+
+<div style="height:0px;clear:both;overflow:hidden;"></div>
+<br/>
+<hr/>
+<h1>API</h1>
+<p><h3>类名： TabPage</h3></p>
+<p>
+<h3>属性：</h3>
+
+<table width="100%">
+	<tr>
+		<th width="20%">类型</th>
+		<th width="20%">属性</th>
+		<th>说明</th>
+	</tr>
+	<tr>
+		<td>object(HTML)</td>
+		<td>tabPDiv</td>
+		<td>选项卡的最外层</td>
+	</tr>
+
+	<tr>
+		<td>string</td>
+		<td>idStr</td>
+		<td>tabPDiv的id和用于生成选项卡菜单的id和选项卡内容层的id</td>
+	</tr>
+
+	<tr>
+		<td>string</td>
+		<td>tabPDivCss</td>
+		<td>tabPDiv的样式</td>
+	</tr>
+
+	<tr>
+		<td>object(HTML)</td>
+		<td>tabMenu</td>
+		<td>选项卡菜单的父层</td>
+	</tr>
+
+	<tr>
+		<td>object(HTML)</td>
+		<td>tabConDiv</td>
+		<td>选项卡内容层的父层</td>
+	</tr>
+
+	<tr>
+		<td>array</td>
+		<td>tabObj</td>
+		<td>选项卡内容对象</td>
+	</tr>
+</table>
+</p>
+
+
+
+<p>
+<h3>方法：</h3>
+<table width="100%">
+	<tr>
+		
+		<th width="20%">属性</th>
+		<th width="20%">参数</th>
+		<th width="20%">功能</th>
+		<th>例子</th>
+	</tr>
+	<tr>
+		<td>setTabObj</td>
+		<td>(Array arrayObj)</td>
+		<td>设置选项卡的内容层内容</td>
+		<td>tabPage.setTabObj([{title:"11",id:"a1"},{title:"21",id:"b1"}])</td>
+	</tr>
+	<tr>
+		<td>setTabPDivCss</td>
+		<td>(String css)</td>
+		<td>设置选项卡最外层的样式</td>
+		<td>tabPage.setTabPDivCss("padding:5px;border:1px solid #CCC;background:#eee;")</td>
+	</tr>
+	<tr>
+		<td>addedTo</td>
+		<td>(String id)</td>
+		<td>选项卡加入到哪个位置</td>
+		<td>tabPage.addedTo("y");</td>
+	</tr>
+</table>
+</p>
+<hr/>
+<h1>使用说明</h1>
+<pre>
+
+&lt;div id=&quot;x&quot; style=&quot;float:left;width:400px;margin-right:10px;&quot;&gt;&lt;/div&gt;
+&lt;div id=&quot;y&quot; style=&quot;width:400px;float:right;margin-left:10px;&quot;&gt;&lt;/div&gt;
+
+&lt;div id=&quot;a1&quot; style=&quot;float:left&quot;&gt;a1&lt;/div&gt;
+&lt;div id=&quot;b1&quot; style=&quot;float:right&quot;&gt;b1&lt;/div&gt;
+&lt;div id=&quot;c1&quot;&gt;c1&lt;/div&gt;
+&lt;div id=&quot;d1&quot;&gt;d1&lt;/div&gt;
+&lt;div id=&quot;a&quot;&gt;a&lt;/div&gt;
+&lt;div id=&quot;b&quot;&gt;b&lt;/div&gt;
+&lt;div id=&quot;c&quot;&gt;c&lt;/div&gt;
+&lt;div id=&quot;d&quot;&gt;d&lt;/div&gt;
+
+
+window.onload = function(){
+	var tabPage = new TabPage(&quot;dc&quot;);//设置选项卡最外层的id
+	tabPage.setTabPDivCss(&quot;padding:5px;border:1px solid #CCC;&quot;);//设置最外层的样式
+	tabPage.setTabObj([{title:&quot;1&quot;,id:&quot;a&quot;},{title:&quot;2&quot;,id:&quot;b&quot;},{title:&quot;3&quot;,id:&quot;c&quot;},{title:&quot;4&quot;,id:&quot;d&quot;}]);//设置选项卡内容层
+	tabPage.addedTo(&quot;x&quot;);//把选项卡添加到id是"x"的元素中
+
+
+	var tabPage = new TabPage(&quot;dcc&quot;);	
+	tabPage.setTabPDivCss(&quot;padding:5px;border:1px solid #CCC;background:#eee;&quot;);
+	tabPage.setTabObj([{title:&quot;11&quot;,id:&quot;a1&quot;},{title:&quot;21&quot;,id:&quot;b1&quot;},{title:&quot;31&quot;,id:&quot;c1&quot;},{title:&quot;41&quot;,id:&quot;d1&quot;}]);
+	tabPage.addedTo(&quot;y&quot;);
+}
+</pre>
+</body>
+</html>

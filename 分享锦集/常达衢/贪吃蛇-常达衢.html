@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>贪吃蛇</title>
+<link rel="stylesheet" href="style.css">
+<style type="text/css">
+	*{
+	 padding:0;
+	 margin:0;
+	}
+	html,body{
+	 width:100%;
+	 height:100%;
+	}
+	body{
+	 position:relative;
+	}
+	div#container{
+	 position:absolute;
+	 top:0;
+	 bottom:0;
+	 left:0;
+	 right:0;
+	 margin:auto;
+	 width:800px;
+	 height:500px;
+	 border:1px solid black;
+	 font-size:0px;
+	}
+	span{
+	 display:inline-block;
+	 border:1px solid black;
+	 box-sizing:border-box;
+	}
+	span.snake{
+	 position:absolute;
+	 background-color:red;
+	}
+	span.food{
+	 position:absolute;
+	 background-color:blue;
+	}
+</style>
+</head>
+<body>
+ 	<div id="container"></div>
+<script>
+	var box={width:50,height:50};//每一个方块的高度
+	var snake=[];//保存蛇每一节身体对应的span
+	// 蛇体移动的方向;
+	var DIR={
+	 DIR_RIGHT:1,
+	 DIR_LEFT:2,
+	 DIR_TOP:3,
+	 DIR_BOTTOM:4
+	};
+	// 初始方向为下;
+	var dir=DIR.DIR_BOTTOM;
+	var food=null; //始终记录当前的食物 
+	window.onload=function(){
+	 //1.初始化地图
+	 initMap();
+	 //2.创建蛇
+	 createSnake();
+	 //2.5随机显示食物
+	 showFood();
+	 //3.让蛇动起来
+	 setInterval(snakeMove,300);
+	 //4.键盘控制蛇移动
+	 document.onkeyup=function(e){
+	 switch(e.keyCode){
+		 case 37:dir=DIR.DIR_LEFT;
+		 	break;
+		 case 38:dir=DIR.DIR_TOP;
+		 	break;
+		 case 39:dir=DIR.DIR_RIGHT;
+		 	break;
+		 case 40:dir=DIR.DIR_BOTTOM;
+		 	break; 
+	 } 
+	 }
+	};
+	// 当前蛇的位置等于食物的位置就等于true do就再走一回;
+	function isInSnakeBody(left,top){
+	 for(var i=0;i<snake.length;i++){
+	 if(snake[i].offsetTop==top&&snake[i].offsetLeft==left){
+		 return true;
+	}
+	}
+	}
+	//这种随机生成食物。
+	function showFood(){
+	 var con=document.getElementById("container");
+	 food=document.createElement("span");
+	 food.className="food";
+	 food.style.width=box.width+"px";
+	 food.style.height=box.height+"px";
+	 var left = 0;
+	 var top = 0;
+	 // 当前蛇的位置相同的话就再生成;
+	 do{
+	 	// 随机生成食物出现的left,top值;乘是要让随机出来的方块的left值;
+		left=Math.floor(con.clientWidth / box.width * Math.random()) * box.width;
+		top=Math.floor(con.clientHeight / box.height * Math.random()) * box.height;
+		// 如果食物和蛇体的位置不重复的话;
+	 } while(isInSnakeBody(left,top));
+	food.style.left=left+"px";
+	food.style.top=top+"px";
+	// 就向父级添加食物
+	con.appendChild(food);
+	}
+	// 创建地图;
+	function initMap(){
+	 var con=document.getElementById("container");
+	 // 地图横向的方块数;向下取整:Math.floor
+	 var row=Math.floor(con.offsetWidth/box.width);
+	 // 地图的纵向方块数;
+	 var rol=Math.floor(con.offsetHeight/box.height);
+	 // 总方块数;
+	 var num=row*rol;
+	 //动态创建小方块;
+	 var newSpan=null;
+	 for(var i=1;i<=num;i++){
+	 	// 创建小方块;
+		newSpan=document.createElement("span");
+		// 给小方块定宽;
+		newSpan.style.width=box.width+"px";
+		// 给小方块定高;
+		newSpan.style.height=box.height+"px";
+		// 给父级添加小方块;
+		con.appendChild(newSpan);
+	 } 
+	}
+	//创建蛇体的函数;
+	function createSnake(){
+	//定义一个蛇体方块; 
+	 var newBody=null;
+	 // 获取添加完小方块的父级;
+	 var con=document.getElementById("container");
+	 // 蛇体的初始长度;
+	 for(var i=0;i<=4;i++){
+	 	// 动态创建组成蛇体的方块;
+		newBody=document.createElement("span");
+		// 蛇体方块的宽等于小方块的宽;
+		newBody.style.width=box.width+"px";
+		// 蛇体方块的高等于小方块的高;
+		newBody.style.height=box.height+"px";
+		// 蛇体初始位置;
+		newBody.style.left=(i)*box.width+"px";
+		newBody.style.top="0px";
+		// 给蛇体添加样式;
+		newBody.className="snake";
+		// 向父级添加蛇体;
+		con.appendChild(newBody);
+		// 向蛇体数组添加组成它的块;
+		snake.push(newBody);
+	 }
+	}
+	// 蛇体移动的函数;
+	function snakeMove(){
+	 // 获取添加了蛇体和方块的父级;
+	 var con=document.getElementById("container");
+	 //获取蛇头
+	 var head=snake[snake.length-1];
+	 // 获取蛇头相对于父级的位置;
+	 var newTop=head.offsetTop;
+	 var newLeft=head.offsetLeft;
+	 // 判断蛇头的方向,改变蛇体的位置;
+	 switch(dir){
+	 case DIR.DIR_LEFT:newLeft-=box.width; 
+	 	break;
+	 case DIR.DIR_RIGHT:newLeft+=box.width; 
+	 	break;
+	 case DIR.DIR_TOP:newTop-=box.height; 
+	 	break;
+	 case DIR.DIR_BOTTOM:newTop+=box.height; 
+	 	break;
+	 default:break;
+	 }
+	 //如果超出边界，计算蛇头下一个位置的坐标
+	 if(newLeft>con.clientWidth - 1){
+	 	newLeft=0;
+	 }
+	 if(newLeft<0){
+	 	newLeft=con.clientWidth-box.width;
+	 }
+	 if(newTop<0){
+	 	newTop=con.clientHeight-box.height;
+	 }
+	 if(newTop>con.clientHeight-1){
+	 	newTop=0;
+	 }
+	 //判断新蛇头的位置是不是在蛇身体里面
+	 for(var i=0;i<snake.length-1;i++){
+	 	if(snake[i].offsetLeft==newLeft&&snake[i].offsetTop==newTop){
+	 	alert("Game over！！");
+	 	// 跳转到新的一局;
+	 	window.location.href=window.location.href;
+	 } 
+	 }
+	 //1.如果吃到食物
+	 if(newLeft==food.offsetLeft&&newTop==food.offsetTop){
+		food.className="snake";
+		snake.push(food);
+		// 随机食物;
+		showFood();
+	 return;
+	 }
+	 //2.如果没吃到
+	 //除蛇头外身体移动
+	 for(var i=0;i<snake.length - 1;i++){
+		snake[i].style.top=snake[i+1].offsetTop+"px";
+		snake[i].style.left=snake[i+1].offsetLeft+"px";
+	 }
+		head.style.left =newLeft+"px";
+		head.style.top=newTop+"px";
+	}
+</script>
+ </body>
+</html>

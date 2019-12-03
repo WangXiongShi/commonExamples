@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style type="text/css">
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		.clearFix::after{
+			content: '';
+			display: block;
+			clear:both;
+		}
+		#wrap{
+			width: 1000px;
+			height: 600px;
+			border:1px solid #ccc;
+			margin:5px auto;
+			position: relative;
+			border-bottom: none;
+		}
+		ul{
+			list-style: none;
+			margin:0 auto;
+			width: 980px;
+			position: absolute;
+		}
+		li{
+			width: 100px;
+			height: 30px;
+			background-color: pink;
+			position: absolute;
+		}
+		#ball{
+			width: 15px;
+			height: 15px;
+			background-color: #65FEFf;
+			border-radius: 50%;
+			position: absolute;
+			bottom:20px;
+			left: 492.5px;
+		}
+		#guard{
+			width: 130px;
+			height: 20px;
+			background-color: #BCBCBC;
+			border-radius: 10px;
+			position: absolute;
+			bottom:0px;
+			left:435px;
+			color:white;
+			font-weight: bold;
+			text-align: center;
+			font-size: 10px;
+			line-height: 20px;
+			cursor: pointer;
+		}
+	</style>
+</head>
+<body>
+	<div id="wrap">
+		<ul class="clearFix">
+		</ul>
+		<div id="ball"></div>
+		<div id="guard"></div>
+	</div>
+	<script type="text/javascript">
+		var wrap = document.querySelector('#wrap');
+		var ball = document.querySelector('#ball');
+		var guard = document.querySelector('#guard');
+		var uls = document.querySelector('ul');
+
+		// 动态创建li并逐个定位, 记录每个li的位置
+		for (var i = 0; i < 5; i++) {
+			for (var j = 0; j < 8; j++) {
+				var li = document.createElement('li');
+
+				li.style.top = (i+1)*20 + i*30 + 'px';
+				li.style.left = (j+1)*22 + j*100 + 'px';
+
+				uls.appendChild(li);
+
+				li.left = li.offsetLeft;
+				li.right = li.left + li.offsetWidth;
+				li.top = li.offsetTop;
+				li.bottom = li.top + li.offsetHeight;
+			}
+		}
+
+		var timer = null;
+		
+		// 小球的初始位置
+		var x = 492.5;
+		var y = wrap.offsetHeight - (guard.offsetHeight + ball.offsetHeight);
+
+		// 小球的运动初始角度
+		var deg = randDeg(15, 60);
+		// 小球的运动速度
+		var speedY = 5;
+		// speedX根据speedY确定
+		// （deg*3.14/180：角度转弧度；Math.abs：取绝对值）
+		var speedX = Math.abs(speedY * Math.tan(deg*3.14/180));
+
+	// 点击小球开始游戏
+	ball.onclick = function(){
+		// 小球运动的定时器
+		timer = setInterval(function(){
+			// 弹板位置相关的值
+			guard.left = guard.offsetLeft;
+			guard.right = guard.offsetLeft + guard.offsetWidth;
+			guard.top = guard.offsetTop;
+			guard.bottom = guard.offsetTop + guard.offsetHeight;
+
+			// 小球的位移
+			y += speedY;
+			x += speedX;
+
+			// 赋值
+			ball.style.top = y + 'px';
+			ball.style.left = x + 'px';
+
+			// 小球和主体底部的碰撞检测
+			if(y > wrap.offsetHeight - (guard.offsetHeight + ball.offsetHeight)){
+				
+				// 小球和弹板碰撞
+				if (isCollide(ball, guard)) {
+					deg = randDeg(15, 60);
+					speedY = speedY  * - 1;
+					// 判断小球来时的方向，碰撞后改变方向
+					if (speedX<0) {
+						speedX = Math.abs(speedY) * Math.tan(deg*3.14/180);
+					} else{
+						speedX = speedY * Math.tan(deg*3.14/180);
+					}
+					speedX = speedX * - 1;
+					console.log('小球和弹板碰撞-->deg:'+deg+'-->speedx:'+speedX +'-->speedy:'+ speedY);
+				} else{
+					// console.log('小球和主体底部碰撞-->deg:'+deg+'-->speedx:'+speedX +'-->speedy:'+ speedY);
+					clearInterval(timer);
+					alert('Game Over!');
+				}
+			}else if(y <= 0){ // 小球和主体上部的碰撞检测
+				speedY = speedY * - 1;
+				// console.log('小球和上部碰撞-->deg:'+deg+'-->speedx:'+speedX +'-->speedy:'+ speedY);
+			}
+
+		
+			if(x >= wrap.offsetWidth - ball.offsetWidth){ // 小球和主体右部的碰撞检测
+				deg = randDeg(15, 60);
+				speedX = Math.abs(speedY * Math.tan(deg*3.14/180));
+				speedX = speedX * - 1;
+				// console.log('小球和右部碰撞-->deg:'+deg+'-->speedx:'+speedX);
+			}else if(x <= 0){ // 小球和主体左部的碰撞检测
+				deg = randDeg(15, 60);
+				speedX = -Math.abs(speedY) * Math.tan(deg*3.14/180);
+				speedX = speedX * - 1;
+				// console.log('小球和左部碰撞-->deg:'+deg+'-->speedx:'+speedX +'-->speedy:'+ speedY);
+			}
+
+			// 小球和砖块的碰撞
+			var lis = document.querySelectorAll('li');
+			// console.log(lis);
+	        for(var i = 0 ; i < lis.length; i++){
+				if (isCollide(ball, lis[i])) {
+					deg = randDeg(15, 60);
+					speedY = speedY * - 1;
+					speedX = speedY * Math.tan(deg*3.14/180);
+					speedX = speedX * - 1;
+					// console.log('小球和砖块碰撞-->deg:'+deg+'-->speedx:'+speedX +'-->speedy:'+ speedY);
+					uls.removeChild(uls.children[i]);
+					// 判断砖块是否被打完
+					if (uls.children.length == 0) {
+						clearInterval(timer);
+						alert('恭喜您！游戏获胜！')
+					}
+					break;
+				}
+		    }
+
+		},20);
+	}	
+		// 弹板的鼠标拖拽事件
+		guard.onmousedown = function(e){
+			var ev = e || window.event;
+			var startX = ev.offsetX || ev.layerX;
+			document.onmousemove = function(e){
+				var ev = e || window.event;
+
+				var posX = (ev.clientX + document.body.scrollLeft) - startX - (wrap.offsetLeft+wrap.clientLeft);
+
+				if(posX <= 0){
+					posX = 0;
+				}else if(posX >= wrap.offsetWidth - guard.offsetWidth){
+					posX = wrap.offsetWidth - guard.offsetWidth;
+				}
+				guard.style.left = posX + 'px';
+			}
+		}
+		document.onmouseup = function(){
+			document.onmousemove = null;
+		}
+		
+		// 键盘左右控制弹板移动
+		document.onkeydown = function(){
+		var ev = window.event || e;
+		switch(ev.keyCode) {
+			case 37:
+				guard.style.left = guard.offsetLeft - 60 + 'px';
+				
+					if (guard.offsetLeft <= 0) {
+						guard.style.left = '0px';
+					}
+				break;
+			case 39:
+				guard.style.left = guard.offsetLeft + 60 + 'px';
+
+					if (guard.offsetLeft >= 870) {
+						guard.style.left = '870px';
+					}
+				break;
+			}
+		}
+
+		// 碰撞检测封装函数
+		function isCollide(ball, lis){
+			var ballLeft = ball.offsetLeft;
+		    var ballRight = ballLeft + ball.offsetWidth;
+		    var ballTop = ball.offsetTop;
+		    var ballBottom = ballTop + ball.offsetHeight;
+		    
+		    if (ballRight >= lis.left && ballBottom >= lis.top && ballLeft <= lis.right && ballTop <= lis.bottom) {
+		    	return true;
+		    } else{
+		    	return false;
+		    }
+		}
+
+		// 随机角度
+		function randDeg(min, max){
+			return Math.floor(Math.random()*(max-min+1)+min);
+		}
+	</script>
+</body>
+</html>

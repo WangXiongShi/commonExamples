@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.js"></script>
+	<script src="https://cdn.staticfile.org/angular.js/1.4.6/angular.min.js"></script>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		h4{
+			margin: 5px;
+			position: relative;
+		}
+		.spt1{
+			background: linear-gradient(#c8f6ca,#ebebeb);
+			overflow: hidden;
+			height: 0;
+			transition: all 0.5s;
+		}
+		strong{
+			font-weight: bold;
+			position: absolute;
+			right: 0;
+		}
+		.active{
+			height: 315px;
+		}
+		div{
+			cursor:pointer;
+		}
+		div:hover{
+			background-color: rgba(200,0,0,0.3);
+		}
+	</style>
+	<script>
+		angular.module('myApp',[])
+		.controller('myCtrl',function($scope){
+			$scope.list = [
+				{
+					title:'1.嵌入式系统软件开发工程师——北京',
+					name:'职位类型：全职 ',
+					age:'4. 熟悉嵌入式软件开发流程，熟练使用软件模拟和硬件仿真器'
+				},
+				{
+					title:'1.嵌入式系统软件开发工程师——北京',
+					name:'职位类型：全职 ',
+					age:'4. 熟悉嵌入式软件开发流程，熟练使用软件模拟和硬件仿真器'
+				},
+				{
+					title:'1.嵌入式系统软件开发工程师——北京',
+					name:'职位类型：全职 ',
+					age:'4. 熟悉嵌入式软件开发流程，熟练使用软件模拟和硬件仿真器'
+				},
+				{
+					title:'1.嵌入式系统软件开发工程师——北京',
+					name:'职位类型：全职 ',
+					age:'4. 熟悉嵌入式软件开发流程，熟练使用软件模拟和硬件仿真器'
+				}
+			]
+			$scope.bol = function(e){
+				var spts = document.querySelectorAll('.spt1')
+				console.log(e.target.parentNode);
+				var box = e.target.parentNode;
+				var boll = box.children[1].className == 'spt1 active';
+				for (var j = 0; j < spts.length; j++) {
+					spts[j].className = 'spt1';
+				}
+				if(boll){
+					box.children[1].className = 'spt1';
+				}else{
+					box.children[1].className += ' active';
+				}
+			}
+		})
+	</script>
+</head>
+<body ng-controller="myCtrl">
+		<div ng-repeat="item in list" ng-click="bol($event)" class="boxparent">
+			<h4>{{item.title}}<strong>∨</strong></h4>
+			<div class="spt1">
+				<p>{{item.name}}</p>
+				<p>{{item.age}}</p>
+			</div>
+		</div>
+	<script>
+		// $(function(){
+		// 	$('.boxparent').click(function(){
+		// 		$(this).children('div').toggleClass('active');
+		// 		if($(this).children('div').hasClass('active')){
+		// 			$(this).siblings().children('div').removeClass('active');
+		// 		}
+		// 	})
+		// })
+	</script>
+</body>
+</html>

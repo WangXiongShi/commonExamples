@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+        .box{
+            width: 50px;
+            height: 30px;
+            background-color: red;
+            position: fixed;
+            right: 30px;
+            bottom: 100px;
+            display: none;
+        }
+        #h{
+            height: 3000px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">TOP</div>
+    <div id="h"></div>
+    <script type="text/javascript">
+    // onscroll:当滚动条发生改变时(滚动条向上或者向下移动)触发该事件
+
+    // document.documentElement.scrollTop
+
+    // 兼容写法
+    // var scollTop = document.documentElement.scrollTop + document.body.scrollTop;
+
+    //兼容写法
+    // var scrollTop = 0;
+    // if(document.documentElement.scrollTop){
+    //     scrollTop = document.documentElement.scrollTop;
+    // }else{
+    //     scrollTop = document.body.scrollTop;
+    // }
+    var scrollTop = 0;
+    var box = document.querySelector('.box');
+    box.onclick = function(){
+        // alert(1);
+        document.documentElement.scrollTop = 0;
+        document.body.scrollTop = 0;
+    }
+    // 滚动条事件
+    window.onscroll = function(){
+        // console.log('chorme------->'+document.documentElement.scrollTop);
+        // console.log('非chorme------>'+document.body.scrollTop);
+
+        if(document.documentElement.scrollTop){
+            scrollTop = document.documentElement.scrollTop;
+        }else{
+            scrollTop = document.body.scrollTop;
+        }
+
+        if(scrollTop >= 1500){
+            box.style.display = 'block';
+        }else{
+            box.style.display = 'none';
+        }
+    } 
+
+
+    // var box = document.querySelector('.box');
+    // box.onclick = function(){
+    //     var tops = setInterval(function(){
+    //     document.body.scrollTop -=  20;
+    //         if(document.body.scrollTop <= 0){
+    //         clearInterval(tops);
+    //         }
+    //     })
+    // }
+
+    </script>
+</body>
+</html>

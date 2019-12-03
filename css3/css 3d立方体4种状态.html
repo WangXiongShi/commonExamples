@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .container {
+            width: 400px;
+            height: 400px;
+            border: 1px solid #cccccc;
+        }
+
+        .ope {
+            margin-top: 100px;
+            text-align: center;
+        }
+
+        .ope button {
+            margin: 0 10px;
+            border: 1px solid #4380f5;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #4380f5;
+            color: #ffffff;
+            outline: none;
+        }
+
+        .ope button:hover {
+            background-color: #3e76e3;
+        }
+
+        .ope button:active {
+            background-color: #3361ba;
+        }
+
+        .box {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            margin: auto;
+            margin-top: 150px;
+            transform-style: preserve-3d;
+        }
+
+        .box div {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: .5;
+            transform-origin: center;
+        }
+
+        .box div:nth-of-type(1) {
+            background-color: red;
+        }
+
+        .box div:nth-of-type(2) {
+            background-color: yellow;
+        }
+
+        .box div:nth-of-type(3) {
+            background-color: green;
+        }
+
+        .box div:nth-of-type(4) {
+            background-color: blue;
+        }
+
+        .box div:nth-of-type(5) {
+            background-color: black;
+        }
+
+        .box div:nth-of-type(6) {
+            background-color: darkmagenta;
+        }
+
+        /*status2*/
+        .box.status2 {
+            animation: box-status2-move ease 1s 0s forwards;
+        }
+
+        .box.status2 div {
+            animation: ease 1s 0s forwards;
+        }
+
+        .box.status2 div:nth-of-type(1) {
+            animation-name: box1-status2-move;
+        }
+
+        .box.status2 div:nth-of-type(2) {
+            animation-name: box2-status2-move;
+        }
+
+        .box.status2 div:nth-of-type(3) {
+            animation-name: box3-status2-move;
+        }
+
+        .box.status2 div:nth-of-type(4) {
+            animation-name: box4-status2-move;
+        }
+
+        .box.status2 div:nth-of-type(5) {
+            animation-name: box5-status2-move;
+        }
+
+        .box.status2 div:nth-of-type(6) {
+            animation-name: box6-status2-move;
+        }
+
+        @keyframes box-status2-move {
+            0% {
+                transform: rotatex(0deg) rotatey(0deg)
+            }
+            100% {
+                transform: rotatex(45deg) rotatey(45deg)
+            }
+        }
+
+        @keyframes box1-status2-move {
+            0% {
+                transform: rotatex(0deg);
+            }
+            100% {
+                transform: rotatex(90deg);
+            }
+        }
+
+        @keyframes box2-status2-move {
+            0% {
+                transform: rotatex(0deg);
+            }
+            100% {
+                transform: rotatex(90deg);
+            }
+        }
+
+        @keyframes box3-status2-move {
+            0% {
+                transform: rotatex(0deg);
+            }
+            100% {
+                transform: rotatey(90deg);
+            }
+        }
+
+        @keyframes box4-status2-move {
+            0% {
+                transform: rotatex(0deg);
+            }
+            100% {
+                transform: rotatey(90deg);
+            }
+        }
+
+        @keyframes box5-status2-move {
+            0% {
+            }
+            100% {
+            }
+        }
+
+        @keyframes box6-status2-move {
+            0% {
+            }
+            100% {
+            }
+        }
+
+        /*status3*/
+        .box.status3 {
+            animation: box-status3-move ease 1s 0s forwards;
+        }
+
+        .box.status3 div {
+            animation: ease 1s 0s forwards;
+        }
+
+        .box.status3 div:nth-of-type(1) {
+            animation-name: box1-status3-move;
+        }
+
+        .box.status3 div:nth-of-type(2) {
+            animation-name: box2-status3-move;
+        }
+
+        .box.status3 div:nth-of-type(3) {
+            animation-name: box3-status3-move;
+        }
+
+        .box.status3 div:nth-of-type(4) {
+            animation-name: box4-status3-move;
+        }
+
+        .box.status3 div:nth-of-type(5) {
+            animation-name: box5-status3-move;
+        }
+
+        .box.status3 div:nth-of-type(6) {
+            animation-name: box6-status3-move;
+        }
+
+        @keyframes box-status3-move {
+            0% {
+                transform: rotatex(45deg) rotatey(45deg)
+            }
+            100% {
+                transform: rotatex(45deg) rotatey(45deg)
+            }
+        }
+
+        @keyframes box1-status3-move {
+            0% {
+                transform: rotatex(90deg);
+            }
+            100% {
+                transform: rotatex(90deg) translatez(50px);
+            }
+        }
+
+        @keyframes box2-status3-move {
+            0% {
+                transform: rotatex(90deg);
+            }
+            100% {
+                transform: rotatex(90deg) translatez(-50px);
+            }
+        }
+
+        @keyframes box3-status3-move {
+            0% {
+                transform: rotatey(90deg);
+            }
+            100% {
+                transform: rotatey(90deg) translatez(50px);
+            }
+        }
+
+        @keyframes box4-status3-move {
+            0% {
+                transform: rotatey(90deg);
+            }
+            100% {
+                transform: rotatey(90deg) translatez(-50px);
+            }
+        }
+
+        @keyframes box5-status3-move {
+            0% {
+                transform: translatez(0px);
+            }
+            100% {
+                transform: translatez(50px);
+            }
+        }
+
+        @keyframes box6-status3-move {
+            0% {
+                transform: translatez(0px);
+            }
+            100% {
+                transform: translatez(-50px);
+            }
+        }
+
+        /*animate*/
+        .box.animate {
+            animation: box-move ease 4s 0s infinite;
+        }
+
+        .box.animate div {
+            animation: ease 4s 0s infinite;
+        }
+
+        .box.animate div:nth-of-type(1) {
+            animation-name: box1-move;
+        }
+
+        .box.animate div:nth-of-type(2) {
+            animation-name: box2-move;
+        }
+
+        .box.animate div:nth-of-type(3) {
+            animation-name: box3-move;
+        }
+
+        .box.animate div:nth-of-type(4) {
+            animation-name: box4-move;
+        }
+
+        .box.animate div:nth-of-type(5) {
+            animation-name: box5-move;
+        }
+
+        .box.animate div:nth-of-type(6) {
+            animation-name: box6-move;
+        }
+
+        @keyframes box-move {
+            0% {
+                transform: rotatex(0deg) rotatey(0deg)
+            }
+            50% {
+                transform: rotatex(45deg) rotatey(45deg)
+            }
+            100% {
+                transform: rotatex(405deg) rotatey(405deg)
+            }
+        }
+
+        @keyframes box1-move {
+            0% {
+                transform: rotatex(0deg);
+            }
+            25% {
+                transform: rotatex(90deg);
+            }
+            50% {
+                transform: rotatex(90deg) translatez(50px);
+            }
+            100% {
+                transform: rotatex(90deg) translatez(50px);
+            }
+        }
+
+        @keyframes box2-move {
+            0% {
+                transform: rotatex(0deg);
+            }
+            25% {
+                transform: rotatex(90deg);
+            }
+            50% {
+                transform: rotatex(90deg) translatez(-50px);
+            }
+            100% {
+                transform: rotatex(90deg) translatez(-50px);
+            }
+        }
+
+        @keyframes box3-move {
+            0% {
+                transform: rotatex(0deg);
+            }
+            25% {
+                transform: rotatey(90deg);
+            }
+            50% {
+                transform: rotatey(90deg) translatez(50px);
+            }
+            100% {
+                transform: rotatey(90deg) translatez(50px);
+            }
+        }
+
+        @keyframes box4-move {
+            0% {
+                transform: rotatex(0deg);
+            }
+            25% {
+                transform: rotatey(90deg);
+            }
+            50% {
+                transform: rotatey(90deg) translatez(-50px);
+            }
+            100% {
+                transform: rotatey(90deg) translatez(-50px);
+            }
+        }
+
+        @keyframes box5-move {
+            0% {
+
+            }
+            25% {
+                transform: translatez(0px);
+            }
+            50% {
+                transform: translatez(50px);
+            }
+            100% {
+                transform: translatez(50px);
+            }
+        }
+
+        @keyframes box6-move {
+            0% {
+
+            }
+            25% {
+                transform: translatez(0px);
+            }
+            50% {
+                transform: translatez(-50px);
+            }
+            100% {
+                transform: translatez(-50px);
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="box">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+
+    <div class="ope">
+        <button id="status1">状态1</button>
+        <button id="status2">状态2</button>
+        <button id="status3">状态3</button>
+        <button id="animate">连续</button>
+    </div>
+</div>
+
+<script>
+    (function () {
+        var box = document.getElementsByClassName('box')[0];
+
+        document.getElementById('status1').onclick = function () {
+            box.className = 'box';
+        }
+
+        document.getElementById('status2').onclick = function () {
+            box.className = 'box status2';
+        }
+
+        document.getElementById('status3').onclick = function () {
+            box.className = 'box status3';
+        }
+
+        document.getElementById('animate').onclick = function () {
+            box.className = 'box animate';
+        }
+    })();
+</script>
+
+</body>
+</html>

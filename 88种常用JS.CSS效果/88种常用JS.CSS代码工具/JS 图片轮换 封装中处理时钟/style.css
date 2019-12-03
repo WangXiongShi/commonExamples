@@ -1,0 +1,34 @@
+
+/* CSS Document */
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6,     
+pre, form, fieldset, input, textarea, p, blockquote, th, td {padding: 0; margin: 0;}    
+fieldset, img {border: 0;}    
+table {border-collapse: collapse;border-spacing: 0;}    
+ol, ul {list-style: none;}    
+address, caption, cite, code, dfn, em, th, var {font-weight: normal;font-style: normal;}    
+caption, th {text-align: left;}    
+h1, h2, h3, h4, h5, h6 { font-weight: normal; font-size: 100%; }    
+q:before, q:after {content: ''; }    
+abbr, acronym {border: 0;}
+/* Clear Fix */
+.clearfix:after{content:".";display:block;height:0;clear:both;visibility:hidden;}
+.clearfix{display:inline-block;}
+.clearfix{display:block;}
+.clear{clear:both;height:0px;font-size:0px;line-height:0px;}
+
+body{ background:#eee; text-align:left;}
+.main{ width:950px; padding:20px 10px; border:solid #c0c0c0; border-width:0 1px; background:#fff; margin:0 auto; height:1000px;}
+.slider{ margin:20px auto; clear:both; background:#eee; width:950px; overflow:hidden; height:320px; position:relative;}
+.items{ clear:both; height:30px; padding:6px;}
+.items li{ float:left; width:28px; height:28px; border:1px solid #fff; margin-right:2px; cursor:pointer; text-indent:-2000px; overflow:hidden;}
+.items li.cur{ width:60px;}
+.b1{ background:#f60;}
+.b2{ background:#368ce8;}
+.b3{ background:#5c973c;}
+.b4{ background:#b7b9c5;}
+.b5{ background:#3d3d3d;}
+.b6{ background:#d1299b;}
+.b7{ background:#c00;}
+#actor{ display:none;}
+.stage{ position:absolute;  left:0; top:42px; width:2000px; height:240px; overflow:hidden;}
+.stage li{ float:left;} 

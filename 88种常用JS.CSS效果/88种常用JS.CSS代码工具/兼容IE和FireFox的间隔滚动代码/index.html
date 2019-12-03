@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>兼容IE和FireFox的间隔滚动代码</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<style type="text/css">
+<!--
+body {
+    text-align:left;
+}
+#andyscroll {
+    width:180px;
+    height:180px;
+    overflow:hidden;
+    white-space:normal; 
+    word-break:break-all;
+    line-height: 18px;
+    font-weight: bold;
+    margin: 5px;
+    float: left;
+    overflow:hidden;
+}
+#andyscroll a {
+    font:12px/18px tahoma;
+    font-weight: bold;
+    color: #333; 
+    float:left;
+    width:100%;
+    text-decoration: none;
+    display:block;
+}
+#andyscroll a:hover {
+    font:12px/18px tahoma;
+    color: #F60;
+}
+-->
+</style>
+</head>
+<body>
+<div id="andyscroll">
+    <div id="scrollmessage"> 
+        <a href="links2.html">Other link2</a> <br />
+            <a href="links_cn.html">link_cn</a><br />
+            <a href="dvd-to-ipod-video-converter.html">DVD to iPod Videos, DVD to iPod Movie Converter</a><br />
+            <a href="dvd-to-ipod-video-converter.html">DVD  to iPod Movie Video</a><br />
+            <a href="download/">PSP Downloads</a> <br />
+            <a href="support/">iPod Video Conversion Guide</a> <br />
+            <a href="http://www.avex-dvd.com/">DVD Ripper</a><br />
+            <a href="http://www.avex-dvd.com/dvd-to-ipod-video-converter.html">DVD to iPod Movie Video Converter</a><br />
+            <a href="http://www.avex-dvd.com/dvd-to-zune-video-converter.html">DVD to Zune Movie Video Converter</a><br />
+            <a href="http://www.avex-dvd.com/zune-video-converter.html">Zune Movie Video Converter</a><br />
+            <a href="http://www.avex-dvd.com/dvd-to-psp-video-converter.html">DVD to PSP Video Movie Converter</a><br />
+            <a href="http://www.avex-dvd.com/psp-video-converter.html">PSP Video Converter</a><br />
+            <a href="http://www.avex-dvd.com/dvd-ripper.html">DVD Ripper</a> <br />
+            <a href="http://www.avex-dvd.com/dvd-ripper-platinum.html">DVD Ripper Platinum</a> <br />
+            <a href="psp/video_converter.html" title="PSP Video Converter">Download-s PSP  Video-s X Converter Software </a> <br />
+            <a href="psp/video_converter.html"> PSP Movie Video Converter</a><br />
+            <a href="support/" title="Video Compress: DVD to Pocket PC/Palm/PSP Guide"> DVD to PSP Movies Video Software Guide</a><br />
+            <a href="support/psp_settings_video.html" title="DVD to Pocket PC Video Setting">PSP Movie Video Converter Software Setting</a><br />
+            <a href="support/psp_settings_audio.html" title="DVD to Pocket PC Audio Setting">PSP Movie Video converter - Audio Software Setting</a><br />
+            <a href="support/pqdvd_settings_video.html" title="DVD to Palm Video Setting">Download-s DVDs, Movies, Video to Pocket PC - Movies, Video Setting</a><br />
+            <a href="http://www.us.playstation.com/psp.aspx" title="Sony PSP">Sony PSP</a><br />
+            <a href="http://microsoft.handango.com/PlatformProductDetail.jsp?siteId=75&platformId=2&productId=111156" title="DVD to Pocket PC Movies/Video Converter Software Downloads - Microsoft">DVD to Pocket PC Movies/Video Converter Software Downloads - Microsoft</a><br />
+            <a href="psp/video_converter.html" title="DVD to Pocket PC Movies/Video Converter Software">PSP Downloads : PSP Video Converter </a><br />
+            <a href="http://www.dvdempire.com/" title="DVDEmpire Movie">DVD Empire Movies, Video, PSP UMD, PSP DVD </a><br/>
+            <a href="http://www.pocketmovies.net/" title="Pocket PC Movies/Video Download">Pocket PC Movies Video Downloads </a><br/>
+            <a href="watch_dvd2ppc.html" title="DVD to Pocket PC Video Guide">DVD2PPC Software Movie Video Converter</a><br />
+            <a href="dvd-3gp-mobile-video-converter.html">3GP Movie Video Converter for cell phone </a><br /><br />
+            input video supports:<strong><br />
+            WMV, WMV Video 9,DIVX,XVID,RM video 9, RM 10<br />
+            iPod DVD, iPod Video/Movie formats<br />
+    </div> 
+</div>
+<script type="text/javascript">
+<!--
+var stopscroll = false;
+var scrollElem = document.getElementById("andyscroll");
+var marqueesHeight = scrollElem.style.height;
+scrollElem.onmouseover = new Function('stopscroll = true');
+scrollElem.onmouseout  = new Function('stopscroll = false');
+var preTop = 0;
+var currentTop = 0;
+var stoptime = 0;
+var leftElem = document.getElementById("scrollmessage"); 
+scrollElem.appendChild(leftElem.cloneNode(true));
+init_srolltext();
+
+function init_srolltext(){
+    scrollElem.scrollTop = 0;
+    setInterval('scrollUp()', 25);//的面的这个参数25, 是确定滚动速度的, 数值越小, 速度越快
+}
+function scrollUp(){
+    if(stopscroll) return;
+    currentTop += 1; //设为1, 可以实现间歇式的滚动; 设为2, 则是连续滚动
+    if(currentTop == 180) {//滚动的高度
+        stoptime += 1;
+        currentTop -= 1;
+        if(stoptime == 180) {
+            currentTop = 0;
+            stoptime = 0;
+        }
+    }else{
+        preTop = scrollElem.scrollTop;
+        scrollElem.scrollTop += 1;
+        if(preTop == scrollElem.scrollTop){
+            scrollElem.scrollTop = 0;
+            scrollElem.scrollTop += 1;
+        }
+    }
+}
+//-->
+</script>
+</body>

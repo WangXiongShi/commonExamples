@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Œﬁ±ÍÃ‚ 1</title>
+<script>
+function fx(el,attr,to){
+	el=typeof el=='string'?document.getElementById(el):el;
+	if(to>0)el.style.display='block';
+	var w=el['offset'+attr.replace(/^(.)/,new Function('return arguments[1].toUpperCase()'))];
+	var Int=Math[to-w>0?'ceil':'floor'];
+	clearInterval(el.timer);
+	el.timer=setInterval(function(){
+		w+=Int((to-w)*0.1);
+		el.style[attr]=w+'px';
+		if(w==to){	 
+			if(to==0)el.style.display='none';
+			clearInterval(el.timer);
+		};	
+	},10);
+};
+window.onload = function (){
+	var a=document.getElementById("t1");
+	var b=document.getElementById("t2");
+	var c=document.getElementById("t3");
+        var d=document.getElementById("t4");
+	var d1=document.getElementById("div1");
+	var d2=document.getElementById("div2");
+	var d3=document.getElementById("div3");
+	var d4=document.getElementById("div4");
+	d1.onmouseover=a.onmouseover=function (){fx('div1','height',300)};
+	d1.onmouseout=a.onmouseout=function (){fx('div1','height',0)};
+	d2.onmouseover=b.onmouseover=function (){fx('div2','height',300)};
+	d2.onmouseout=b.onmouseout=function (){fx('div2','height',0)};
+	d3.onmouseover=c.onmouseover=function (){fx('div3','height',300)};
+	d3.onmouseout=c.onmouseout=function (){fx('div3','height',0)};
+        d4.onmouseover=d.onmouseover=function (){fx('div4','height',300)};
+	d4.onmouseout=d.onmouseout=function (){fx('div4','height',0)};	
+}
+</script>
+</head>
+<body>
+<div id="t1" style=" position:absolute;background:black; left: 579px; top: 34px; width: 149px; height: 35px;"></div>
+<div id="div1" style="position:absolute;background:aqua;left:579px;overflow:hidden;top:70px;width:349px;display:none" ></div>
+<div id="t2" style=" position:absolute;background:black; left: 0px; top: 34px; width: 149px; height: 35px;"></div>
+<div id="div2" style="position:absolute;background:red;left:0px;overflow:hidden;top:70px;width:349px;display:none" ></div>
+<div id="t3" style=" position:absolute;background:black; left: 200px; top: 34px; width: 149px; height: 35px;"></div>
+<div id="div3" style="position:absolute;background:blue;left:200px;overflow:hidden;top:70px;width:349px;display:none" ></div>
+
+<div id="t4" style="position:absolute;background:black; left: 900px; top: 34px; width: 149px; height: 35px;"></div>
+<div id="div4" style="position:absolute;background:blue;left:200px;overflow:hidden;top:70px;width:349px;display:none" ></div>
+</body>
+</html>

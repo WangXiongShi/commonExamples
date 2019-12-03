@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+        #wrap{
+            width: 300px;
+            height: 300px;
+            background-color: white;
+            border: 10px dashed #ccc;
+            margin: 0 auto;
+            font-size: 30px;
+            color: #ccc;
+            text-align: center;
+            line-height: 300px;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        将文件拖放到此处~
+    </div>
+</body>
+<script type="text/javascript">
+    // 获取wrap
+    var wrap = document.querySelector("#wrap");
+
+    // // 判断localStorage里面是否有imgData，如果有直接从localStorage中读取文件
+    // if(localStorage.imgData){
+    //     wrap.style.background = "url("+localStorage.imgData+") no-repeat";
+    //     wrap.style.backgroundSize = "100%";
+    //     wrap.innerHTML = "";
+    // }
+
+    // 给wrap添加拖放事件(拖放文件到目标区域)
+    wrap.ondragenter = function(){
+        this.style.backgroundColor = "gray";
+        console.log("图片拖放进入");
+    }
+
+    //当拖放离开目标区域时
+    wrap.ondragleave = function(){
+        this.style.backgroundColor = "";
+        console.log("图片拖放移开");
+    }
+    
+    //当图片放入到目标区域时
+    wrap.ondrop = function(e){
+        // （当图片放入到浏览器中时）阻止浏览器解析文件的默认事件
+        var ev = window.event || e;
+        ev.preventDefault();
+        
+        // 获取文件(数据转换)
+        var files = ev.dataTransfer.files[0];
+        console.log(ev.dataTransfer.files)
+
+        //创建一个文件读取对象
+        var fileReader = new FileReader();
+
+        // 将文件读取为DataURL(二进制编码)
+        fileReader.readAsDataURL(files);
+
+        // 读取完毕
+        fileReader.onload = function(e){
+            var ev = window.event || e;
+            // 返回读取完成之后的数据（64位编码格式）
+            var data = ev.target.result;
+
+            // // 把返回过来的数据，持久化存储(localStorage)
+            // localStorage.imgData = data;
+
+            wrap.style.background = "url("+ data+") no-repeat";
+            wrap.style.backgroundSize = "100%";
+            wrap.innerHTML = "";
+        }
+
+
+
+    }
+
+    // 取消浏览器默认拖放区域移动事件（给wrap添加拖放区域移动事件）如果不添加拖放移动事件，ondrop将不会执行
+    wrap.ondragover = function(e){
+        var ev = window.event || e;
+        ev.preventDefault();
+    }
+
+</script>
+</html>

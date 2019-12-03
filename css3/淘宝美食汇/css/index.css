@@ -1,0 +1,109 @@
+*{
+	margin: 0;
+	padding:0;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+body{
+	background: url(../img/bg.jpg);
+}
+#wrap{
+	width: 1200px;
+	height: 360px;
+	/*盒子阴影: x位移 y位移 羽化 半径 颜色 内阴影inset(默认外阴影)*/
+	box-shadow: 0 0 50px 5px #222;
+	/*transition:all 0.5s;*/
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform:translate(-50%,-50%);
+	color:white;
+}
+#wrap ul{
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-wrap:wrap;/*强制换行*/
+	justify-content: space-around;/*主轴方向(默认横向)对齐方式环绕*/
+	align-items: center;/*辅助(默认纵向)对齐方式 居中*/
+}
+#wrap ul li{
+	width: 360px;
+	height: 139px;
+	background-repeat:no-repeat
+	transition:.5s;/*css3 过渡*/
+	cursor:pointer;/*改变鼠标指针样式*/
+	position: relative;/*相对定位*/
+	box-shadow:0 0 9px #000;
+}
+#wrap ul li:nth-child(1){
+	background-image: url(../images/1.webp);
+	
+}
+#wrap ul li:nth-child(2){
+	background-image: url(../images/2.webp);
+	
+}
+#wrap ul li:nth-child(3){
+	background-image: url(../images/3.webp);
+	
+}
+#wrap ul li:nth-child(4){
+	background-image: url(../images/4.webp);
+	
+}
+#wrap ul li:nth-child(5){
+	background-image: url(../images/5.webp);
+	
+}
+#wrap ul li:nth-child(6){
+	background-image: url(../images/6.webp);
+	
+}
+#wrap ul li .title{
+	width: 0%;
+	height: 0%;
+	background-color: rgba(255,255,255,.8);
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	text-align: center;
+	color: black;
+	transition:.5s all;
+	overflow: hidden;
+}
+h3{
+	height: 60px;
+	line-height: 60px;
+	font-size: 18px;
+}
+p{
+	font-size: 16px;
+	color:#434343;
+	line-height: 20px;
+}
+a{
+	width: 80px;
+	height: 30px;
+	background-color: #368;
+	text-decoration:none;
+	color: #fff;
+	display: block;
+	line-height: 30px;
+	margin:10px auto 0px;
+}
+#wrap ul li:hover .title{
+	width: 100%;
+	height: 100%;
+	top: 0px;
+	left: 0px;
+}

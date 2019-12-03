@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0px;
+			padding: 0px;
+		}
+		li{
+			width: 300px;
+			height: 40px;
+			line-height: 40px;
+			text-align: center;
+			list-style: none;
+		}
+		#box{
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%,-50%);
+			width: 300px;
+			height: 160px;
+			text-align: center;
+			overflow: hidden;
+		}
+		.list li:nth-child(even){
+			background-color: skyblue;
+		}
+		.list li:nth-child(odd){
+			background-color: pink;
+		}
+	</style>
+</head>
+<body>
+	<div id="box">
+		<ul class="list">
+			<li>张三1 183****1234</li>
+			<li>张三2 183****1234</li>
+			<li>张三3 183****1234</li>
+			<li>张三4 183****1234</li>
+			<li>张三5 183****1234</li>
+			<li>张三6 183****1234</li>
+			<li>张三7 183****1234</li>
+			<li>张三8 183****1234</li>
+		<!-- 	<li>张三1 183****1234</li>
+			<li>张三2 183****1234</li>
+			<li>张三3 183****1234</li>
+			<li>张三4 183****1234</li>
+			<li>张三5 183****1234</li>
+			<li>张三6 183****1234</li>
+			<li>张三7 183****1234</li>
+			<li>张三8 183****1234</li> -->
+		</ul>
+	</div>
+	<script>
+		// 获取元素
+		var box = document.querySelector('#box');
+		var list = document.querySelector('.list');
+
+		// 动态添加list
+		list.innerHTML += list.innerHTML;
+
+		setInterval(function(){
+			// 让box的scrollTop值加1
+			box.scrollTop += 1;
+			// 判断条件
+			if (box.scrollTop >= 320) {
+				box.scrollTop = 0;
+			}
+		},20);
+
+
+
+
+
+
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+	<button id='shiftBtn' type="button" name="button">开关</button>
+	<script src='http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js'></script>
+	<script type="text/javascript">
+	$(function(){
+		var timeout=true;
+		var count=0;
+		var titleOrigin='';
+		$('#shiftBtn').on('click',function(){
+			if(count==0){
+				titleOrigin=$('title',window.top.document).html();
+				$('title',window.top.document).html('【有新提醒】'+titleOrigin);
+				count++;
+			}
+			if(timeout){
+					timeout=false;
+			}else{
+					timeout=true;
+			}
+			time();
+		})
+		function time()
+		{
+		  if(timeout) {
+				$('title',window.top.document).html(titleOrigin);
+				count=0;
+				return;
+			}
+		  Method();
+		  setTimeout(time,500); //time是指本身,延时递归调用自己,500为间隔调用时间,单位毫秒
+		}
+		function Method(){
+			var titlePre=$('title',window.top.document).html().match(/\【[\s\S]*\】/)[0];
+			var titleafter=$('title',window.top.document).html().replace(titlePre,'');
+
+			if(titlePre=='【有新提醒】'){
+				$('title',window.top.document).html('【&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;】'+titleafter)
+			}else{
+				$('title',window.top.document).html('【有新提醒】'+titleafter)
+			}
+		}
+
+	})
+	</script>
+</body>
+
+</html>

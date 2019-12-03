@@ -1,0 +1,61 @@
+/* pub */
+.thd_tabPage_cls{
+      height:0px;
+	  overflow:hidden;
+	  clear:both;
+	  }
+
+
+
+
+/* tabPage */
+
+#thd_tabPage_pPDiv{}
+
+#thd_tabPage_sdPDiv{/* tab parent div *//*ÄÚÈÝ¿òÑùÊ½*/
+     border:1px solid #8db2e3;
+	 border-top-width:0px;
+	 padding:10px;
+	 overflow:hidden;
+	 }
+
+#thd_tabPage_menuUl{/* tab ul */
+     padding:0px;
+	 margin:0px;
+	 overflow:hidden;
+	 background:url("../images/menuBg.gif") repeat-x bottom;
+	 height:25px;
+	 }
+
+#thd_tabPage_menuUl div{/* tab ul > li */
+     list-style-type:none;
+	 cursor:pointer;
+	 width:94px;
+	 height:24px;
+	 text-align:center;
+	 line-height:24px;
+	 font-size:12px;
+	 padding:0px;
+	 margin:0px;
+	 float:left;
+	 background:url("../images/thd_tabPage_bg.gif");
+	 }
+
+#thd_tabPage_menuUl div.hover{/* tab ul > li.hover */
+     height:25px !important;
+	 font-weight:bold;
+	 }
+
+#thd_tabPage_menuUl span{/* tab ul > span(the left border of first tabMenu) */
+     height:23px;
+	 margin-top:2px;
+	 float:left;
+	 width:1px;
+	 background:#8db3e4;
+	 }
+
+#thd_tabPage_menuUl .thd_tabPage_lBor{/* tab ul > img(the left border of first tabMenu) */
+     margin-top:2px;
+	 float:left;
+	 border-width:0px;
+	 }

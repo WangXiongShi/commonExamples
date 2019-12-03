@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style type="text/css">
+		div{
+			width: 300px;
+			height: 300px;
+			background: red;
+			border: 2px solid blue;
+			margin: 100px;
+			padding: 50px;
+			float: left;
+		}
+		p{
+			width: 250px;
+			height: 250px;
+			background: purple;
+			text-align: center;
+			margin: 0 auto;
+		}
+		span{
+			display: block;
+			width: 100px;
+			height: 100px;
+			background: pink;
+			text-align: center;
+			margin: 0 auto;
+		}
+	</style>
+</head>
+<body>
+	<!-- 对比onmouseenter与onmouseover的区别 -->
+	<!-- onmouseenter 不支持事件冒泡 -->
+	<div id="div1">
+		<p>onmouseenter<span id="demo1">鼠标移动到这里</span></p>
+	</div>
+
+	<div id="div2">
+		<p>onmouseover<span id="demo2">鼠标移动到这里</span></p>
+	</div>
+	<script type="text/JavaScript">
+	// onmouseenter：鼠标移动到自身是会触发事件，但是移动到其子元素身上不会触发事件
+	// onmouseover：鼠标移动到自身时候会触发事件，同时移动到其子元素身上也会触发事件
+
+		// 获取元素
+		var div1 = document.querySelector('#div1');
+		var div2 = document.querySelector('#div2');
+		var demo1 = document.querySelector('#demo1');
+		var demo2 = document.querySelector('#demo2'); 
+
+		var i = 0;
+		// 给div1添加鼠标移入事件
+		div1.onmouseenter = function(){
+			demo1.innerHTML = i += 1;
+		}
+
+		var j = 0;
+		// 给div2添加鼠标移入事件
+		div2.onmouseover = function(){
+			demo2.innerHTML = j += 1;
+		}
+
+	</script>
+</body>
+</html>

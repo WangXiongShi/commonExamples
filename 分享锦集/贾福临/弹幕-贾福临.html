@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <!-- behavior 滚动的方式 alternate scroll slide -->
+    <!-- direction:方向 上up 下down 左left 右right -->
+    <!-- loop 弹幕的循环次数 -1和数值 -->
+    <!-- scrollamount 滚动速度 -->
+    <!-- scrolldelay 延迟 -->
+    <!-- hspace 左右margin -->
+    <!-- vspace 上下margin -->
+    <!-- onmouseout 鼠标移出 -->
+    <!-- onmouseover 鼠标移入 -->
+    <marquee></marquee>
+    <marquee behavior="" direction="">一路飘过~ ~ ~</marquee>
+    <marquee behavior=''>一路跟随!</marquee>
+    <marquee id="marquee" onmouseout="this.start()" onmouseover="this.stop()">onMouseOut="this.start()" ：用来设置鼠标移出该区域时继续滚动 onMouseOver="this.stop()"：用来设置鼠标移入该区域时停止滚动</marquee>
+
+    <marquee behavior="scroll" bgcolor="#FF0000" direction="up" height="300" width="200" hspace="50" vspace="20" loop="-1" scrollamount="10" scrolldelay="100" onmouseout="this.start()" onmouseover="this.stop()">
+        <h1>我是p1</h1>
+        <h1>我是p2</h1>
+        <h1>我是p3</h1>
+        <h1>我是p4</h1>
+        <h1>我是p5</h1>
+<!-- 这是一个完整的例子 -->
+    </marquee>
+
+
+<marquee scrolldelay="10" >延迟="10" </marquee>
+<marquee scrolldelay="100" >还得延迟="100"</marquee>
+<marquee scrolldelay="1000">我要延迟="1000" </marquee>
+
+</body>
+</html>

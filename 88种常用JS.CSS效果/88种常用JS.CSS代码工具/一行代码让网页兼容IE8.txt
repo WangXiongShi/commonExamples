@@ -1,0 +1,8 @@
+热门的tag非IE8莫属
+各浏览器厂商争相发布版本更新 
+部分网页也存在与IE8的兼容性问题 
+简单一行代码，让IE8自动调用IE7的渲染模式 
+只需要在页面中加入如
+
+HTTP meta-tag: 
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" /> 

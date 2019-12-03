@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding: 0;
+        }
+        .container{
+        }
+        body{
+            font-size: 18px;
+        }
+        pre{
+            background: #272822;
+            color:#D2F547;
+            font-size: 40px;
+            font-family: Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", 
+                "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", 
+                "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div style="height:100px;"></div>
+        <h1>this is box1</h1>
+        <ul class="box1">
+           <li style="background: #FF4040;"></li> 
+           <li style="background: #FFC125;"></li> 
+           <li style="background: #CD6839;"></li> 
+           <li style="background: #C0FF3E;"></li> 
+           <li style="background: #9AFF9A;"></li> 
+           <li style="background: #8B1A1A;"></li> 
+        </ul> 
+        <style type="text/css">
+            .box1 {
+                display: flex;
+                /*flex-direction: row | row-reverse | column | column-reverse;*/
+            }
+            li{
+                flex : 1;
+                height: 200px;
+                list-style-type: none;
+            }
+        </style>
+        <pre>
+            html
+            css
+            .box1 {
+                display: flex;
+            }
+            li{
+                flex : 1;
+                height: 200px;
+                list-style-type: none;
+            }
+        </pre>  
+        <h1>this is box2</h1>
+        <div class="box2">
+            <div class="box2_left">
+                
+            </div>
+            <div class="box2_right">
+                this is our weilai!hahahaha!this is our weilai!hahahaha!
+            </div>
+        </div> 
+        <style type="text/css">
+            .box2 {
+                display: flex;
+            }
+            .box2_left {
+                flex:0 0 100px;
+                width: 100px;
+                height: 30px;
+                background: #FFC125;
+            }
+            .box2_right {
+                flex :1;
+                background: #8B1A1A;
+            }
+        </style>
+        <pre>
+            html
+            css
+            .box2 {
+                display: flex;
+            }
+            .box2_left {
+                flex:0 0 100px;
+                width: 100px;
+                height: 30px;
+                background: #FFC125;
+            }
+            .box2_right {
+                flex :1;
+                background: #8B1A1A;
+            }
+        </pre>  
+        <h1>this is box3</h1>
+        <ul class="box3">
+           <li style="background: #FF4040;">
+               <div></div>
+           </li> 
+           <li style="background: #FFC125;">
+               <div></div>
+           </li> 
+           <li style="background: #CD6839;">
+               <div></div>
+           </li> 
+           <li style="background: #C0FF3E;">
+               <div></div>
+           </li> 
+           <li style="background: #9AFF9A;">
+               <div></div>
+           </li> 
+           <li style="background: #8B1A1A;">
+               <div></div>
+           </li> 
+        </ul> 
+        <style type="text/css">
+            .box3 {
+                display: flex;
+                justify-content: space-around;
+                /*flex-direction: row | row-reverse | column | column-reverse;*/
+            }
+            li{
+                flex : 0 0 12%;
+                height: 200px;
+                list-style-type: none;
+                position: relative;
+            }
+            li div{
+                position: absolute;
+                width: 30px;
+                height: 30px;
+                background: blues;
+                right: 0;
+                top:0;
+            }
+        </style>
+        <pre>
+            html
+            css
+            .box3 {
+                display: flex;
+                justify-content: space-around;
+                /*flex-direction: row | row-reverse | column | column-reverse;*/
+            }
+            li{
+                flex : 0 0 12%;
+                height: 200px;
+                list-style-type: none;
+                position: relative;
+            }
+            li div{
+                position: absolute;
+                width: 30px;
+                height: 30px;
+                background: blues;
+                right: 0;
+                top:0;
+            }
+        </pre>  
+        <div class="" style="height:1000px"></div>
+    </div>
+    
+</body>
+</html>

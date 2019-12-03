@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>alert标签名</title>
+</head>
+<body>
+    <div id="one">div</div>
+    <a href="javascript:;">a</a>
+    <b>b</b>
+    <script>
+    function elementName(evt){  
+          evt = evt|| window.event;   // IE: window.event  
+          // IE用srcElement获取事件源，而FF用target获取事件源
+          var selected = evt.target || evt.srcElement;  
+          alert(selected.tagName);  
+      }  
+      window.onload = function(){  
+          var el =document.getElementsByTagName('body');  
+          el[0].onclick = elementName;
+      }
+    </script>
+</body>
+</html>

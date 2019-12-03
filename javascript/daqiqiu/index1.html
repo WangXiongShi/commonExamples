@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		*{margin:0;padding:0;}
+		body{background-color: #ccc;overflow: hidden;}
+		.balloon{
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 160px;
+			height: 160px;
+			background-color: #faf9f9;
+			border-radius:50% 50% 25% 50%;
+			transform: rotate(45deg);/*顺时针旋转45度*/
+			box-shadow: -8px -8px 80px -8px #873940 inset;/*盒子阴影 x位移 y位移 羽化与半径(复合写法) 颜色 内(inset)外阴影*/
+		}
+		.balloon::after{
+			content: '';/*内容 必须有*/
+			position: absolute;
+			bottom: 3px ;
+			right: 3px;
+			border:8px solid transparent;
+			border-right-color:#873940; 
+			transform: rotate(45deg);
+			border-radius:50%;
+		}
+	</style>
+</head>
+<body>
+	<div class="balloon"></div>
+
+	<script type="text/javascript">
+		/*
+			javascript
+			需求分析
+			js生成div通过在页面上向上运动, 以不同的速度 点击气球 气球会做动画之后消失
+			
+				1, js动态生成div标签 并且初始化
+					1,生成几个
+					num = 10
+					2,如何生成一个标签
+						1,createElement
+						2,设置属性 classname
+						3,塞进body标签中 appendChild
+					3,如何生成多个气球
+						循环
+						createDocumentFragment 优化dom节点片断性能
+					4,初始化气球生成位置
+						1,纵向
+							top = 窗口高度- 气球高度
+						2,横向
+							0 - 浏览器窗口随机 
+							Math.random() 伪随机数 从0到1 包括0不包括1
+				2, js让气球动起来
+					1,获取到所有的气球节点
+					2,循环让所有top属性递减
+					3,定时器
+						setInterval setTimeout
+
+				3, 点击气球, 气球做动画后小时
+					1, 鼠标点击事件 事件委托
+					2, 气球被点击之后让气球消失
+						父级.removChild(子级)
+				4, 爆炸动画
+					ps : this 上下文
+					1,速度++
+					2,宽高--
+					3,
+		*/
+		var num = 10;	/*初次生成气球的数量*/	//1
+
+		var wH = window.innerHeight; //获取浏览器高度
+
+		var wW = window.innerWidth;//获取浏览器宽度
+
+		var bZ = 160;	//气球自身的高度
+
+		var timer = null;//初始化定时器变量
+
+		init(num);//执行初始化
+
+		recall();//动画
+
+		// 3,点击气球, 气球做动画后小时
+		document.body.addEventListener('click',function(event){ //事件委托
+
+			if(event.target.className === 'balloon'){//判断触发点击事件的元素类名是否是气球
+
+				// alert('点到气球了');
+				// event.target.parentNode.removeChild(event.target);
+
+				boom.call(event.target,function(){
+
+					this.parentNode.removeChild(this);
+
+					init(1);
+					
+				}.bind(event.target));//替换函数内部的this去执行...
+
+			}
+
+		});
+
+		// 4爆炸
+		function boom(cb){//this全部都是被点击的节点气球
+
+			// var that = this;
+			this.timer = setInterval(function(){//定时器
+
+				if(this.offsetWidth < 10){
+
+					//停止定时器
+					clearInterval(this.timer);
+
+					// 移出节点
+					cb&&cb.call(this);
+				}
+
+				this.speed++;//速度增加 越来越快
+
+				this.style.width = this.offsetWidth - 10 + 'px';//宽度减少
+
+				this.style.height = this.offsetHeight - 10 + 'px';//高度减少
+
+			}.bind(this),1000/30);
+
+		}
+
+
+		function recall(){//递归保证动画稳定性
+
+			move();
+
+			timer = setTimeout(recall,1000/30);//30FPS
+		}
+
+
+		//1, js动态生成div标签 初始化部分,生成气球
+		function init(num){
+
+			// var fragment = document.createDocumentFragment(); //创建dom节点片断 5 性能
+
+			for(var i=0;i<num;i++){	//4循环的去创造气球元素//for不存在块级别作用域
+				
+				var randomX = ~~(Math.random() * (wW-bZ)); //wW-bZ让气球不超出浏览器宽度
+
+				// randomX = Math.max(0,randomX);//-30 限制最小值不能等于0让气球不超出浏览器宽度
+
+				var oBalloon = document.createElement('div');/*创建一个div*/	//2
+
+				oBalloon.className = 'balloon';/*添加类名*/	//3
+
+				oBalloon.style.top = wH  + 'px';//改变气球的top
+
+				oBalloon.style.left = randomX + 'px';//随机气球横向位置
+
+				oBalloon.speed = ~~(Math.random()*8)+1;//自定义属性 气球向上的速度随机 Math.random()可以随机到0,那么0*8就是0,速度为0,气球就会不动了
+
+				document.body.appendChild(oBalloon);//把创建出来的气球元素添加到body中
+
+			}
+
+			// document.body.appendChild(fragment);  //6气球元素插入到节点
+			document.body.appendChild(oBalloon);
+
+		}
+		
+		move();
+
+
+		// 2, js让气球动起来
+		function move(){
+
+			//获取所有的气球
+			var balloons = document.querySelectorAll('.balloon');
+
+			for(var i=0,len=balloons.length;i<len;i++){//优化for循环性能
+
+				// 执行阶段
+				balloons[i].style.top = balloons[i].offsetTop - balloons[i].speed + 'px';
+
+			}
+
+		}
+
+
+	</script>
+</body>
+</html>
+<!-- 
+	after before	伪元素:: 	伪类:	冒号来区分 
+
+	bind
+
+	~~算法兼容性高   Math.floor()方法
+
+
+	// Math.random()返回 0 ~ 1 之间的随机数
+	// Math.floor()对数进行下舍入
+	// Math.abs()返回数的绝对值
+	// Math.sin()返回数的正弦
+	// Math.cos()返回数的余弦
+	// Math.tan()返回角的正切
+	// Math.pow()返回 x 的 y 次幂
+	// Math.round()把数四舍五入为最接近的整数
+	// Math.min()返回 x 和 y 中的最低值
+	// Math.max()返回 x 和 y 中的最高值
+ -->

@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+<title> code.js.cn </title>
+<style>
+a{display:block;font-size:15px;line-height:18px;text-decoration:none;color:#333;font-family:Arial;font-size:12px;}
+.shell{
+	background:url(http://bbs.blueidea.com/images/common/xml.gif) no-repeat 4px 5px;
+	border:1px solid #aaa; 
+	width:400px;
+	padding:3px 2px 2px 20px; 
+}
+.core{
+	height:18px;
+	overflow:hidden;
+}
+</style>
+</head>
+<body>
+<div class="shell">
+	<div id="div1" class="core">
+	  <a href="javascript:">请教高手帮我看下这段代码 FLASH显示不了</a>
+	  <a href="javascript:">请教在UTF-8编辑下的符号显示问题 </a>
+	  <a href="javascript:">jquery做的一个滑动效果,不知如何增加延迟,现在太灵敏了</a>
+	  <a href="javascript:">技术研究-QQ09版按钮渐显渐隐的由来 </a>
+	  <a href="javascript:">javascript读取Json数据并分页显示，支持键盘和滚轮翻页 </a>
+	  <a href="javascript:">腾讯网奇怪的PNG文件，拜师以求解惑</a>
+	  <a href="javascript:">更新lhgdialog-ver2.0.1弹出窗口组件 2009-7-18 </a>
+	</div> 
+</div>
+<p></p>
+<div class="shell">
+	<div id="div2" class="core">
+	  <a href="javascript:">请教高手帮我看下这段代码 FLASH显示不了</a>
+	  <a href="javascript:">请教在UTF-8编辑下的符号显示问题 </a>
+	  <a href="javascript:">jquery做的一个滑动效果,不知如何增加延迟,现在太灵敏了</a>
+	  <a href="javascript:">技术研究-QQ09版按钮渐显渐隐的由来 </a>
+	  <a href="javascript:">javascript读取Json数据并分页显示，支持键盘和滚轮翻页 </a>
+	  <a href="javascript:">腾讯网奇怪的PNG文件，拜师以求解惑</a>
+	  <a href="javascript:">更新lhgdialog-ver2.0.1弹出窗口组件 2009-7-18 </a>
+	</div> 
+</div>
+<p></p>
+<div class="shell">
+	<div id="div3" class="core">
+	  <a href="javascript:">请教高手帮我看下这段代码 FLASH显示不了</a>
+	  <a href="javascript:">请教在UTF-8编辑下的符号显示问题 </a>
+	  <a href="javascript:">jquery做的一个滑动效果,不知如何增加延迟,现在太灵敏了</a>
+	  <a href="javascript:">技术研究-QQ09版按钮渐显渐隐的由来 </a>
+	  <a href="javascript:">javascript读取Json数据并分页显示，支持键盘和滚轮翻页 </a>
+	  <a href="javascript:">腾讯网奇怪的PNG文件，拜师以求解惑</a>
+	  <a href="javascript:">更新lhgdialog-ver2.0.1弹出窗口组件 2009-7-18 </a>
+	</div> 
+</div>
+<p></p>
+<div class="shell">
+	<div id="div4" class="core">
+	  <a href="javascript:">请教高手帮我看下这段代码 FLASH显示不了</a>
+	  <a href="javascript:">请教在UTF-8编辑下的符号显示问题 </a>
+	  <a href="javascript:">jquery做的一个滑动效果,不知如何增加延迟,现在太灵敏了</a>
+	  <a href="javascript:">技术研究-QQ09版按钮渐显渐隐的由来 </a>
+	  <a href="javascript:">javascript读取Json数据并分页显示，支持键盘和滚轮翻页 </a>
+	  <a href="javascript:">腾讯网奇怪的PNG文件，拜师以求解惑</a>
+	  <a href="javascript:">更新lhgdialog-ver2.0.1弹出窗口组件 2009-7-18 </a>
+	</div> 
+</div>
+<p></p>
+<div class="shell">
+	<div id="div5" class="core">
+	  <a href="javascript:">请教高手帮我看下这段代码 FLASH显示不了</a>
+	  <a href="javascript:">请教在UTF-8编辑下的符号显示问题 </a>
+	  <a href="javascript:">jquery做的一个滑动效果,不知如何增加延迟,现在太灵敏了</a>
+	  <a href="javascript:">技术研究-QQ09版按钮渐显渐隐的由来 </a>
+	  <a href="javascript:">javascript读取Json数据并分页显示，支持键盘和滚轮翻页 </a>
+	  <a href="javascript:">腾讯网奇怪的PNG文件，拜师以求解惑</a>
+	  <a href="javascript:">更新lhgdialog-ver2.0.1弹出窗口组件 2009-7-18 </a>
+	</div> 
+</div>
+</body>
+<script>
+function myGod(id,w,n){
+	var box=document.getElementById(id),can=true,w=w||1500,fq=fq||10,n=n==-1?-1:1;
+	box.innerHTML+=box.innerHTML;
+	box.onmouseover=function(){can=false};
+	box.onmouseout=function(){can=true};
+	var max=parseInt(box.scrollHeight/2);
+	new function (){
+		var stop=box.scrollTop%18==0&&!can;
+		if(!stop){
+			var set=n>0?[max,0]:[0,max];
+			box.scrollTop==set[0]?box.scrollTop=set[1]:box.scrollTop+=n;
+		};
+		setTimeout(arguments.callee,box.scrollTop%18?fq:w);
+	};
+};
+myGod('div1',10);
+myGod('div2',10,-1);
+myGod('div3',500,-1);
+myGod('div4',500);
+myGod('div5',1500,-1);
+</script>
+</html>

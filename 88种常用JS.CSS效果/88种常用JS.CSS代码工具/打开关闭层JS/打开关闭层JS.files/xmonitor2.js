@@ -1,0 +1,5 @@
+document.writeln("<a href=\"http:\/\/www.xmonitor.cn\" target=\"_blank\"><font color=\"#FF0000\">网站速度\/稳定性免费监测<\/font><\/a>")
+var hostid=3985;
+var d=new Date();
+var t=d.getFullYear()+""+d.getMonth()+""+d.getDate();
+document.write('<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="1" height="1" id="test" align="middle"><param name="allowScriptAccess" value="always" /><param name="movie" id="movie" value="http://client.xmonitor.cn/newflash/newB.swf?hosturl='+location.href + '&hostid='+ hostid +'&t='+t+'" /><param name="quality" value="high" /><param name="bgColor" value="#ffffff" /><embed id="test" src="http://client.xmonitor.cn/newflash/newB.swf?hosturl='+location.href+'&hostid='+hostid+'&t='+t+'" quality="high" bgcolor="#ffffff" width="1" height="1" name="test" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"/></object>');

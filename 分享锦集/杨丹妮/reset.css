@@ -1,0 +1,52 @@
+html,body,ul,dl,dt,dd,ol,li,input,button,select,p,h1,h1,h3,h4,h5,h6{
+	margin:0;
+	padding:0;
+}
+img{
+	display;block;
+}
+ul,ol{
+	list-style-type:none;
+}
+b,i{
+	font-style:normal;
+	font-weight:normal;
+}
+a,p,span{
+	font:"Microsoft Yahei";
+	font-size:14px;
+	color:#333;
+}
+a:link,a:visited,a:active{
+	text-decoration:none;
+	font-size:14px;
+	text-align:center;
+	color:red;
+}
+.l{
+	float:left;
+}
+.r{
+	float:right;
+}
+.clear{
+	clear:both;
+}
+.hid{
+	overflow:hidden;
+}
+.pd0{
+	padding:0;
+}
+.mg0{
+	margin:0;
+}
+.bd0{
+	border:none;
+}
+
+	
+	
+
+
+	

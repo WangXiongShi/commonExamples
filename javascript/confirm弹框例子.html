@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script>
+		function moveon(){
+			// 通过弹出一个对话框来询问用户一个问题
+			var answer = confirm('准备好了吗?');
+			// 单击'确定'按钮, 浏览器会加载一个新页面
+			if(answer)window.location = 'http://douyu.com';
+		}
+		// 在1分钟(6万毫秒)后执行定义的这个函数
+		setTimeout(moveon,1000);
+
+		// function debug(msg){
+		// 	var log = document.querySelector('#debuglog');
+
+		// 	if(!log){
+		// 		log = document.createElement('div');
+		// 		log.id = 'debuglog';
+		// 		log.innerHTML = '<h1>Debug Log</h1>';
+		// 		document.body.appendChild(log);
+		// 	}
+		// 	var pre = document.createElement('pre');
+		// 	var text = document.createTextNode(msg);
+		// 	pre.appendChild(text);
+		// 	log.appendChild(pre);
+		// }
+		// debug('王雄师');
+	</script>
+</body>
+</html>

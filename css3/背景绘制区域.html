@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>背景绘制区域</title>
+	<style type="text/css">
+		section{
+			width: 500px;
+			height: 500px;
+			background-color:blue;
+			border:10px dotted black !important;
+			border:10px dashed black;
+		}
+		.box1{
+			padding:35px;
+			background-clip:padding-box;
+		}
+		.box2{
+			margin-top:40px;
+			padding:35px;
+			background-clip:content-box;
+		}
+	</style>
+</head>
+<body>
+		<!-- <p>没有背景剪裁(border-box 没有定义)</p> -->
+	<p>background-clip:padding-box;</p>
+	<section class="box1"></section>
+	<p>background-clip:content-box;</p>
+	<section class="box2"></section>
+</body>
+</html>

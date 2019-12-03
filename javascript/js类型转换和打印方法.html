@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="button" name="" value="我是一个按钮" onclick="MyClick()">
+	<input type="button" name="" value="我是另外一个按钮" id="btn">
+	<script type="text/javascript">
+		// 第一种引入方式
+		function MyClick(){
+			alert(1);
+		}
+		// 第二种引入方式
+		// onload = function() {
+		// 	document.getElementById('btn').onclick = function(){
+		// 		alert('hello world');
+		// 	}
+		// }
+
+
+		// 这样打印出来是未定义
+		// var abc;
+		// alert(abc);
+
+		// var a = 10;
+		// var b = '20';
+		// // 变量转换为数值
+		// alert(a + Number(b));
+
+		var c = '20absi'
+		// 变量转换为整数
+		alert(parseInt(c));
+	</script>
+</body>
+</html>

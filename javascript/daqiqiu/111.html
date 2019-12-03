@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script>
+		var arr = [];
+		while(arr.length < 5){
+			var a = randFn(0,5);
+			if(arr.indexOf(a) == -1){
+				arr.push(a);
+			}
+		}
+		console.log(arr);
+		function randFn(min,max){
+			return ~~(Math.random() * (max - min + 1) + min);
+		}
+	</script>
+</body>
+</html>

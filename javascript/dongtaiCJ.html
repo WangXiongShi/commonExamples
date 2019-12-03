@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		.box{
+			background-color: red;
+			color:yellow;
+			border:10px solid gray;
+			width: 50%;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload = function(){
+			var btn1 = document.querySelector('.btn1');
+			var btn2 = document.querySelector('.btn2');
+			var divs = document.getElementsByTagName('div')[0];
+			var num = 16;
+			btn2.onclick = function(){
+				num += 10;
+				divs.style.fontSize = num + 'px';
+				divs.className = 'box';
+			}
+			btn1.onclick = function(){
+				// alert(1);
+				divs.style.width = '300px';
+			}
+		}
+	</script>
+</head>
+<body>
+	<input type="button" name="" value="-" class="btn1">
+	<input type="button" name="" value="+" class="btn2">
+	<div>
+		 1. 获取子节点
+        
+                var 子节点的伪数组 = 父亲.childNodes; 
+                
+        2. 获取子元素
+        
+                var 子元素的伪数组 = 父亲.children; 
+                
+        3. 获取属性节点
+        
+                var idNode = ul.getAttributeNode("id"); 
+                
+        4. 获取下一个兄弟节点 
+        
+                var node =  xxx.nextSibling;
+                
+        5. 获取下一个兄弟元素 
+                
+                var ele =  xxx.nextElementSibling;
+                
+        6. 获取上一个兄弟节点
+        
+                var node =  xxx.previousSibling;
+                
+        7. 获取上一个兄弟元素 
+                
+                var ele =  xxx.previousElementSibling;
+        
+        8. 追加子节点 
+        
+                father.appendChild(demo);
+                把一个节点放到父节点内部的最后
+	</div>
+</body>
+</html>

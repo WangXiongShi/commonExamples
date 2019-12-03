@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>五角星等级</title>
+    <style>
+        .commentScore {
+            font-size: 40px;
+            color: #fff536;
+        }
+
+        .commentScore li {
+            float: left;
+            cursor: pointer;
+        }
+
+        ul {
+            list-style: none;
+        }
+    </style>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        $(function () {
+            var wjx_none = '☆';
+            var wjx_sel = '★';
+
+            //鼠标放上去当前的li和之前所有的li内容全部变为实心五角星，移开变为空心。
+            $(".commentScore li").on("mouseenter",function () {
+                $(this).text(wjx_sel).prevAll("li").text(wjx_sel).end().nextAll("li").text(wjx_none);
+            });
+            $(".commentScore li").on("mouseleave",function () {
+                if($("li.current").length === 0){
+                    $(".current").text(wjx_none);
+                }else {
+                    $("li.current").text(wjx_sel).prevAll("li").text(wjx_sel).end().nextAll("li").text(wjx_none);
+                }
+            });
+            //鼠标点击那个li，当你前li和之前所有的li都变成实心五角星，其他变为空心。
+            $(".commentScore li").on("click",function () {
+                $(this).attr("class","current").siblings("li").removeAttr("class");
+                console.log($(this).index())
+            })
+        });
+    </script>
+</head>
+<body>
+    <ul class="commentScore">
+        <li>★</li>
+        <li>★</li>
+        <li>★</li>
+    </ul>
+</body>
+</html>

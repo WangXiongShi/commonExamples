@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+	<h1>1111</h1>
+	<script>
+		document.getElementsByTagName('h1')[0].onclick = function(){
+			alert(1)
+		}
+		// notify({
+  //           message: "请选择Excel",
+  //           type: 'danger'
+  //       });
+		//同步请求
+function asyncRestful(url, param,contentType) {
+//	debugger
+    var values = null;
+    var opts = {
+        async: false,
+        type: 'POST',
+        dataType: 'json',
+        url: url.slice(1, url.length),
+        data: param || null
+    };
+    if(contentType){
+    		opts.contentType= 'application/json';
+    		opts.data = JSON.stringify(param)
+    }
+    $.ajax(opts).done(function (data) {
+//    	debugger
+        values = data.obj;
+    		if(data.code == 2){
+    			values = -1
+    		}
+    });
+    return values;
+}
+// 消息通知
+// @param animate 提示框动画
+// @param title 提示框标题
+// @param message 提示框内容
+// @param type 		提示框样式
+// function notify(param) {
+//     var animate = {};
+//     if (param.animate) {
+//         animate = param.animate;
+//     } else {
+//         animate = {
+//             enter: 'animated fadeInDown',
+//             exit: 'animated fadeOutUp'
+//         };
+//     }
+//     $.notify({
+//         title: param.title,
+//         message: param.message
+//     }, {
+//         type: param.type,
+//         animate: animate,
+//         timer: 1000,
+//         template: '<div data-notify="container" class="alert alert-{0}" role="alert">' +
+//             '<button type="button" aria-hidden="true" class="close" data-notify="dismiss">×</button>' +
+//             '<span data-notify="icon"></span> ' +
+//             '<span data-notify="title">{1}</span> ' +
+//             '<span data-notify="message" style="padding-right:20px">{2}</span>' +
+//             '<div class="progress" data-notify="progressbar">' +
+//             '<div class="progress-bar progress-bar-{0}" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;"></div>' +
+//             '</div>' +
+//             '<a href="{3}" target="{4}" data-notify="url"></a>' +
+//             '</div>'
+//     });
+// }
+//弹出框
+function swalBox(param) {
+    swal({
+            title: param.title ? param.title : '',
+            text: param.text ? param.text : '',
+            type: param.type ? param.type : "warning",
+            showCancelButton: param.cancelBtn === false ? false : true,
+            confirmButtonClass: param.confirmClass ? param.confirmClass : "btn-primary",
+            confirmButtonText: param.confirmText ? param.confirmText : "确定",
+            cancelButtonText: param.cancelText ? param.cancelText : '取消',
+            closeOnConfirm: true
+        },
+        function (isConfirm) {
+            if (isConfirm) {
+                if (param.success) {
+                    param.success();
+                }
+            } else {
+                if (param.cancel) {
+                    param.cancel();
+                }
+            }
+        });
+}
+//用户名正则匹配
+function checkUser(str) {
+    var reg = /^[a-zA-Z]{1}([a-zA-Z0-9]){4,19}$/;
+    if (reg.test(str)) {
+        return true;
+    } else {
+        return false;
+    }
+}
+//密码正则匹配
+function checkPwd(str) {
+    //是否含有中文（也包含日文和韩文）  
+    var reg1 = /[\u4E00-\u9FA5\uF900-\uFA2D]{7,15}$/;
+    //是否含有全角符号的函数
+    var reg2 = /[\uFF00-\uFFEF]{7,15}$/;
+    if (reg1.test(str) || reg2.test(str)) {
+        return false;
+    } else {
+        return true;
+    }
+}
+//storage操作
+var storage = {
+    save: function (type, key, val) {
+        val = encodeURIComponent(JSON.stringify(val));
+        switch (type) {
+            case 'local':
+                localStorage.setItem(key, val);
+                break;
+            case 'session':
+                sessionStorage.setItem(key, val);
+                break;
+            default:
+                alert('参数错误');
+                break;
+        }
+    },
+    get: function (type, key) {
+        var val = null;
+        switch (type) {
+            case 'local':
+                val = localStorage.getItem(key);
+                break;
+            case 'session':
+                val = sessionStorage.getItem(key);
+                break;
+            default:
+                alert('参数错误');
+                break;
+        }
+        if (val !== null && val != "undefined") {
+            return JSON.parse(decodeURIComponent(val));
+        } else {
+            return null;
+        }
+    },
+    del: function (type, key) {
+        switch (type) {
+            case 'local':
+                localStorage.removeItem(key);
+                break;
+            case 'session':
+                sessionStorage.removeItem(key);
+                break;
+            default:
+                alert('参数错误');
+                break;
+        }
+    },
+    clear: function (type) {
+        switch (type) {
+            case 'local':
+                localStorage.clear();
+                break;
+            case 'session':
+                sessionStorage.clear();
+                break;
+            case 'all':
+                localStorage.clear();
+                sessionStorage.clear();
+                break;
+            default:
+                alert('参数错误');
+                break;
+        }
+    }
+};
+//对象合并
+function combObj(a, b) {
+    for (var i in b) {
+        a[i] = b[i];
+    }
+    return a;
+}
+//数组合并
+function combArr(a, b) {
+    for (var i = 0; i < b.length; i++) {
+        a.push(b[i]);
+    }
+    return a;
+}
+/*字符串*/
+var StringUtils = {};
+StringUtils.isNull = function (val) {
+    if (val === '' || val === null || typeof (val) == 'undefined')
+        return true;
+    else
+        return false;
+};
+
+//检索数组指定值
+Array.prototype.indexOf = function (val) {
+    for (var i = 0; i < this.length; i++) {
+        if (this[i] == val) return i;
+    }
+    return -1;
+};
+//删除对象一些元素，除了指定的key
+function removeExcept(obj, arr) {
+    for (var i in obj) {
+        if (arr.indexOf(i) == -1) {
+            delete obj[i];
+        }
+    }
+    return obj;
+}
+//删除数组的元素（根据value）
+Array.prototype.delByVal = function (value) {
+    for (var i = 0; i < this.length; i++) {
+        if (this[i] == value) {
+            this.splice(i, 1);
+            break;
+        }
+    }
+};
+Array.prototype.getArrayInKeys = function (key, vals) {
+    var arr = [];
+    for (var i = 0; i < this.length; i++) {
+        for(var j = 0; j < vals.length; j++){
+        	if(!isArray(this[i][key])){
+        		if (this[i][key] === vals[j]) {
+                    arr.push(this[i]);
+                }
+        	}else{
+        		if (this[i][key].indexOf(vals[j]) !=-1 ) {
+                    arr.push(this[i]);
+                }
+        	}
+        	 	
+        }
+    }
+    if (arr.length > 0) {
+        return arr;
+    } else {
+        return [];
+    }
+};
+//删除数组元素
+Array.prototype.remove = function (val) {
+    var index = this.indexOf(val);
+    if (index > -1) {
+        this.splice(index, 1);
+    }
+};
+//删除数组的元素（根据key和value）
+Array.prototype.delByKv = function (key, value) {
+    for (var i = 0; i < this.length; i++) {
+        if (this[i][key] == value) {
+            this.splice(i, 1);
+            break;
+        }
+    }
+};
+//删除数组的元素（根据index）
+Array.prototype.delByIndex = function (index) {
+    for (var i = 0; i < this.length; i++) {
+        if (i === index) {
+            this.splice(i, 1);
+            break;
+        }
+    }
+};
+//根据val检测是否存在
+Array.prototype.indexOfEle = function (val) {
+    for (var i = 0; i < this.length; i++) {
+        if (this[i] == val) return this[i];
+    }
+    return -1;
+};
+//检测是否存在指定key
+Array.prototype.indexOfKey = function (key) {
+    for (var i = 0; i < this.length; i++) {
+        for (var j in this[i]) {
+            if (j == key) {
+                return j;
+            }
+        }
+    }
+    return -1;
+};
+//根据key，val检索是否存在
+Array.prototype.indexOfObject = function (key, val) {
+    for (var i = 0; i < this.length; i++) {
+        if (this[i][key] == val) return i;
+    }
+    return -1;
+};
+//根据key判重
+Array.prototype.judgeDup = function (key) {
+    var n = {},
+        keyArr = [];
+    for (var i = 0; i < this.length; i++) {
+        if (this[i][key] && keyArr.indexOf(this[i][key]) == -1) {
+            keyArr.push(this[i][key]);
+        } else if (keyArr.indexOf(this[i][key]) != -1) {
+            return false;
+        }
+    }
+    return true;
+};
+//根据key，val获取对象
+Array.prototype.getObj = function (key, val) {
+    for (var i = 0; i < this.length; i++) {
+        if (this[i][key] == val) return this[i];
+    }
+    return -1;
+};
+Array.prototype.getObjIndex = function (key, val) {
+    for (var i = 0; i < this.length; i++) {
+        if (this[i][key] == val) return i;
+    }
+    return -1;
+};
+//根据值返回对象
+Array.prototype.returnEle = function (enName) {
+    for (var i = 0; i < this.length; i++) {
+        if (this[i].enName === enName) return this[i];
+    }
+    return -1;
+};
+//根据值返回对象
+Array.prototype.returnValue = function (key, val) {
+    for (var i = 0; i < this.length; i++) {
+        if (this[i][key] === val) return this[i];
+    }
+    return -1;
+};
+//根据key返回字符串
+Array.prototype.returnStr = function (key, val, relKey) {
+    for (var i = 0; i < this.length; i++) {
+        if (this[i][key] == val) return this[i][relKey];
+    }
+    return '';
+};
+//根据值返回匹配的数据
+Array.prototype.returnArray = function (key, val) {
+	var arr = [];
+	for (var i = 0; i < this.length; i++) {
+		if(this[i][key] === val){
+			arr.push(this[i]);
+		}
+	}
+	return arr;
+};
+//根据值返回匹配的数据
+Array.prototype.getArrayByArrKey = function (key, vals) {
+    var arr = [];
+    for (var i = 0; i < this.length; i++) {
+        for(var j = 0; j < vals.length; j++){
+        	 	if (this[i][key] === vals[j]) {
+                 arr.push(this[i]);
+             }
+        }
+    }
+    if (arr.length > 0) {
+        return arr;
+    } else {
+        return [];
+    }
+};
+//根据key获取所有值(返回字符串)
+Array.prototype.getStrByKey = function (key) {
+    var arr = [];
+    for (var i = 0; i < this.length; i++) {
+        arr.push(this[i][key]);
+    }
+    return arr.toString();
+};
+//根据key获取所有值(返回数组)
+Array.prototype.getArrByKey = function (key) {
+    var arr = [];
+    for (var i = 0; i < this.length; i++) {
+        arr.push(this[i][key]);
+    }
+    return arr;
+};
+Array.prototype.getStr = function () {
+    var str = this.toString();
+    if (str.indexOf(",") == -1)
+        return str;
+    return str.substring(0, str.length - 1);
+};
+Array.prototype.getText = function (val) {
+    for (var i = 0; i < this.length; i++) {
+        if (this[i].value === val) return this[i].text;
+    }
+    return "";
+};
+Array.prototype.removeType = function () {
+    for (var i = 0; i < this.length; i++) {
+        var the = this[i].split(":")[1];
+        this[i] = the;
+    }
+    return this;
+};
+Array.prototype.sum = function (key) {
+    var num = 0;
+    for (var i = 0; i < this.length; i++) {
+        var val = this[i][key];
+        if (StringUtils.isNull(val)) {
+            //val = 0;
+            return;
+        }
+        num += Number(val);
+    }
+    if (num !== 0) {
+        return num;
+    } else {
+        return;
+    }
+
+};
+Array.prototype.sumInt = function () {
+    var num = 0;
+    for (var i = 0; i < this.length; i++) {
+        var val = this[i];
+        num += Number(val);
+    }
+    return num;
+};
+Array.prototype.sumSize = function () {
+    var num = 0;
+    for (var i = 0; i < this.length; i++) {
+        var val = this[i].file.size;
+        if (StringUtils.isNull(val)) {
+            val = 0;
+        }
+        num += Number(val);
+    }
+    return num;
+};
+/**
+ * 根据指定key-val值返回数组长度
+ */
+Array.prototype.returnLen = function (key, val) {
+    var num = 0;
+    for (var i = 0; i < this.length; i++) {
+        if (this[i][key] == val) {
+            num++;
+        }
+    }
+    return num;
+};
+/**
+ * 
+ * 字符串替换
+ * @param from
+ * @param to
+ * @param type
+ */
+String.prototype.setValue = function (from, to, type) {
+    from = from.toString();
+    var reg = (type && (type == "g" || type == "i" || type == "m")) ? new RegExp(
+            "\\${" + from + "}", type) :
+        new RegExp("\\${" + from + "}");
+    var str = this.toString().replace(reg, to);
+    return str;
+};
+
+/**
+ * 删除对象指定值
+ */
+function objDelByKey(obj, key) {
+    var _this = obj;
+    if (isArray(key)) {
+        for (var i = 0; i < key.length; i++) {
+            var x = key[i];
+            delete _this[x];
+        }
+    } else {
+        delete _this[key];
+    }
+    return _this;
+}
+
+
+/**
+ * 清除对象空值
+ * @param from
+ * @param to
+ * @param type
+ */
+function clearObjNull(obj) {
+    for (var i in obj) {
+        if (obj[i] === '') {
+            delete obj[i];
+        }
+    }
+    return obj;
+}
+/**
+ * 当前公司ID
+ * @returns
+ */
+function getCompanyId() {
+    var companyObj = storage.get('local', 'ixue_company');
+    if (companyObj) {
+        return storage.get('local', 'ixue_company').id;
+    } else {
+        return null;
+    }
+}
+
+/**
+ * 当前用户信息
+ * @returns
+ */
+function getUser() {
+    return storage.get('local', 'ixue_admin');
+}
+
+/**
+ * 创建option
+ * @param datas
+ * @returns
+ */
+function getOption(datas, key, val) {
+    var arrTmp = [];
+    for (var i = 0; i < datas.length; i++) {
+        arrTmp.push('<option value=' + (key ? datas[i][key] : datas[i].id) + '>' + (val ? datas[i][val] : datas[i].name) + '</option>');
+    }
+    return arrTmp.join('');
+}
+
+function getIconOption(datas, key, val) {
+    var arrTmp = [];
+    for (var i = 0; i < datas.length; i++) {
+        arrTmp.push('<option data-content="<img src=\'' + datas[i].src + '\' width=\'20px\'>' + datas[i][val] + '" value=' + (key ? datas[i][key] : datas[i].id) + '>' + (val ? datas[i][val] : datas[i].name) + '</option>');
+    }
+    return arrTmp.join('');
+}
+
+/**
+ * 创建option（URL方式）
+ * @param datas
+ * @returns
+ */
+function getOptionByUrl(url, params) {
+    var arrTmp = [],
+        param = {};
+    if (url.substr(0, 1) == '/') {
+        url = url.substr(1, url.length);
+    }
+    if (url.indexOf('?') > 0) {
+        url = url + '&companyId=' + getCompanyId();
+    } else {
+        param = $.extend({
+            companyId: getCompanyId()
+        }, params);
+    }
+    var datas = asyncRestful(url, param);
+    if (datas) {
+        for (var i = 0; i < datas.length; i++) {
+            arrTmp.push('<option value=' + datas[i].id + '>' + datas[i].name + '</option>');
+        }
+    }
+    return arrTmp.join('');
+}
+
+/**
+ * 检测是否为数组
+ */
+function isArray(arr) {
+    return Object.prototype.toString.call(arr) == '[object Array]';
+}
+
+/**
+ * bootstrap-fileInput实例化
+ */
+$.fn.fileInit = function (param) {
+    var _this = $(this),
+        file_config = $.extend(angular.copy(Constants.FILEINPUT_CONFIG), param),
+        fileArr = [];
+    init(file_config);
+
+    function init(config) {
+        _this.fileinput(config);
+    }
+    //预览加载完毕
+    /*_this.on('fileimagesloaded', function(event) {
+    });*/
+    //自动上传
+    if (param && param.autoUpload) {
+        $(this).on("filebatchselected", function (event, files) {
+            $(this).fileinput("upload");
+        });
+    }
+    //上传成功回调
+    $(this).on('fileuploaded', function (event, data, previewId, index, a, x, f) {
+
+    });
+};
+//浏览器后退事件
+$(document).ready(function (e) {
+    if (window.history && window.history.pushState) {
+        $(window).on('popstate', function () {
+            $('.modal').modal('hide');
+
+        });
+    }
+});
+/**
+ * 转化参数
+ * @param object
+ */
+function serializeObject(obj) {
+    var query = '';
+    var name, value, fullSubName, subName, subValue, innerObj, i;
+
+    for (name in obj) {
+        value = obj[name];
+
+        if (value instanceof Array) {
+            for (i = 0; i < value.length; ++i) {
+                subValue = value[i];
+                fullSubName = name + '[' + i + ']';
+                innerObj = {};
+                innerObj[fullSubName] = subValue;
+                query += serializeObject(innerObj) + '&';
+            }
+        } else if (value instanceof Object) {
+            for (subName in value) {
+                subValue = value[subName];
+                fullSubName = name + '[' + subName + ']';
+                innerObj = {};
+                innerObj[fullSubName] = subValue;
+                query += serializeObject(innerObj) + '&';
+            }
+        } else if (value !== undefined && value !== null) {
+            query += encodeURIComponent(name) + '=' +
+                encodeURIComponent(value) + '&';
+        }
+    }
+
+    return query.length ? query.substr(0, query.length - 1) : query;
+}
+//---------------------------------------------------
+//日期格式化
+//格式 YYYY/yyyy/YY/yy 表示年份
+//MM/M 月份
+//W/w 星期
+//dd/DD/d/D 日期
+//hh/HH/h/H 时间
+//mm/m 分钟
+//ss/SS/s/S 秒
+//---------------------------------------------------
+Date.prototype.Format = function (formatStr) {
+    var str = formatStr;
+    var Week = ['日', '一', '二', '三', '四', '五', '六'];
+    str = str.replace(/yyyy|YYYY/, this.getFullYear());
+    str = str.replace(/yy|YY/, (this.getYear() % 100) > 9 ? (this.getYear() % 100).toString() : '0' + (this.getYear() % 100));
+    str = str.replace(/MM/, this.getMonth() > 9 ? this.getMonth().toString() : '0' + this.getMonth());
+    str = str.replace(/M/g, this.getMonth());
+    str = str.replace(/w|W/g, Week[this.getDay()]);
+    str = str.replace(/dd|DD/, this.getDate() > 9 ? this.getDate().toString() : '0' + this.getDate());
+    str = str.replace(/d|D/g, this.getDate());
+    str = str.replace(/hh|HH/, this.getHours() > 9 ? this.getHours().toString() : '0' + this.getHours());
+    str = str.replace(/h|H/g, this.getHours());
+    str = str.replace(/mm/, this.getMinutes() > 9 ? this.getMinutes().toString() : '0' + this.getMinutes());
+    str = str.replace(/m/g, this.getMinutes());
+    str = str.replace(/ss|SS/, this.getSeconds() > 9 ? this.getSeconds().toString() : '0' + this.getSeconds());
+    str = str.replace(/s|S/g, this.getSeconds());
+    return str;
+};
+//取出数组中指定key的值，返回数组
+function getArrByKey(param, key) {
+    var arr = [];
+    if (!(param)) {
+        return;
+    }
+    for (var i = 0; i < param.length; i++) {
+        if (param[i][key]) {
+            arr.push(param[i][key]);
+        }
+    }
+    return arr;
+}
+//根据key值以及key的值取出指定值，返回数组
+function getArrByKeyArr(param, key, keyArr, val) {
+    var arr = [];
+    for (var i = 0; i < param.length; i++) {
+        if (keyArr.indexOf(param[i][key]) != -1) {
+            arr.push(param[i][val]);
+        }
+    }
+    return arr;
+}
+//获取当前路由信息
+function getCurUrl() {
+    var menuList = storage.get('local', 'navList');
+    var currentUrl = storage.get('local', 'currentUrl');
+    var obj = menuList.returnValue('url', currentUrl);
+    if (obj) {
+        return obj;
+    } else {
+        return -1;
+    }
+}
+//数字转换为简写汉字
+function numToChinese(Num) {
+    for (var i = Num.length - 1; i >= 0; i--) {
+        Num = Num.replace(",", ""); //替换Num中的“,”
+        Num = Num.replace(" ", ""); //替换Num中的空格
+    }
+    if (isNaN(Num)) { //验证输入的字符是否为数字
+        //alert("请检查小写金额是否正确");
+        return;
+    }
+    //字符处理完毕后开始转换，采用前后两部分分别转换
+    var part = String(Num).split("."),
+        newchar = "";
+    //小数点前进行转化
+    for (i = part[0].length - 1; i >= 0; i--) {
+        if (part[0].length > 10) {
+            //alert("位数过大，无法计算");
+            return "";
+        } //若数量超过拾亿单位，提示
+        var tmpnewchar = "",
+            perchar = part[0].charAt(i);
+        switch (perchar) {
+            case "0":
+                tmpnewchar = "零" + tmpnewchar;
+                break;
+            case "1":
+                tmpnewchar = "一" + tmpnewchar;
+                break;
+            case "2":
+                tmpnewchar = "二" + tmpnewchar;
+                break;
+            case "3":
+                tmpnewchar = "三" + tmpnewchar;
+                break;
+            case "4":
+                tmpnewchar = "四" + tmpnewchar;
+                break;
+            case "5":
+                tmpnewchar = "五" + tmpnewchar;
+                break;
+            case "6":
+                tmpnewchar = "六" + tmpnewchar;
+                break;
+            case "7":
+                tmpnewchar = "七" + tmpnewchar;
+                break;
+            case "8":
+                tmpnewchar = "八" + tmpnewchar;
+                break;
+            case "9":
+                tmpnewchar = "九" + tmpnewchar;
+                break;
+        }
+        switch (part[0].length - i - 1) {
+            case 0:
+                tmpnewchar = tmpnewchar;
+                break;
+            case 1:
+                if (perchar !== 0) tmpnewchar = tmpnewchar + "十";
+                break;
+            case 2:
+                if (perchar !== 0) tmpnewchar = tmpnewchar + "百";
+                break;
+            case 3:
+                if (perchar !== 0) tmpnewchar = tmpnewchar + "千";
+                break;
+            case 4:
+                tmpnewchar = tmpnewchar + "万";
+                break;
+            case 5:
+                if (perchar !== 0) tmpnewchar = tmpnewchar + "十";
+                break;
+            case 6:
+                if (perchar !== 0) tmpnewchar = tmpnewchar + "百";
+                break;
+            case 7:
+                if (perchar !== 0) tmpnewchar = tmpnewchar + "千";
+                break;
+            case 8:
+                tmpnewchar = tmpnewchar + "亿";
+                break;
+            case 9:
+                tmpnewchar = tmpnewchar + "十";
+                break;
+        }
+        newchar = tmpnewchar + newchar;
+    }
+    //替换所有无用汉字，直到没有此类无用的数字为止
+    while (newchar.search("零零") != -1 || newchar.search("零亿") != -1 || newchar.search("亿万") != -1 || newchar.search("零万") != -1) {
+        newchar = newchar.replace("零亿", "亿");
+        newchar = newchar.replace("亿万", "亿");
+        newchar = newchar.replace("零万", "万");
+        newchar = newchar.replace("零零", "零");
+    }
+    //替换以“一十”开头的，为“十”
+    if (newchar.indexOf("一十") === 0) {
+        newchar = newchar.substr(1);
+    }
+    //替换以“零”结尾的，为“”
+    if (newchar.lastIndexOf("零") == newchar.length - 1) {
+        newchar = newchar.substr(0, newchar.length - 1);
+    }
+    return newchar;
+}
+//数字转字母
+function numToEnglish(num) {
+    return String.fromCharCode(64 + parseInt(num));
+}
+//判断是否为数字
+function checkNum(num) {
+    if (isNaN(num)) {
+        return false;
+    } else {
+        return true;
+    }
+}
+//判断是否为整型
+function isInt(num) {
+    if (parseInt(num)) {
+        return num % 1 === 0;
+    } else {
+        return false;
+    }
+}
+//判断是否为浮点型数字
+function isFloat(num) {
+    if (parseInt(num)) {
+        return num % 1 !== 0;
+    } else {
+        return false;
+    }
+}
+//加密对象
+function encodeObj(obj) {
+    return encodeURIComponent(JSON.stringify(obj));
+}
+//解密对象
+function decodeObj(obj) {
+    return JSON.parse(decodeURIComponent(obj));
+}
+
+/**
+ * 递归函数ArrayToTree
+ * @param arr  {Array}    需要递归的数组
+ * @param id   {string}  需要
+ */
+function getTreeArr(arr,id,pId,child){
+  var _map = {},
+    _arr = [],
+    _id = id || 'id',
+    _pId = pId || "pId",
+    _child = child || "child";
+  //以ID为key存储临时map
+  for(var i=0;i<arr.length;i++){
+    _map[arr[i][_id]] = arr[i];
+  }
+  //循环生成父子结构
+  for(var j=0;j<arr.length;j++){
+    if(_map[arr[j][_pId]]){//如果_map[pId]存在的话则有子集
+      if(!_map[arr[j][_pId]][_child]){//如果子集的key存在的话直接push
+        _map[arr[j][_pId]][_child]=[];
+      }
+      _map[arr[j][_pId]][_child].push(arr[j]);
+    }else{//否则就是父级
+      _arr.push(arr[j]);
+    }
+  }
+  return _arr;
+}
+/**
+ * 递归函数TreeToArray
+ * @param treeNodes    {Array}    tree数据
+ * @param opt       {Object}  父子级键值关系和子级Key
+ */
+function treeTolist(treeNodes, opt) {
+    if (!opt) {
+        opt = {};
+        opt.key = "id";
+        opt.parent = "pid";
+        opt.children = "children";
+    }
+    var NodeList = [];
+    function appenChildren(nodes) {
+        for (var i = 0; i < nodes.length; i++) {
+            var node = nodes[i];
+            //如果没有上层节点那么就是根节点
+            if (node.parentNode == null) {
+                node.Level = 0;
+                node[opt.parent]=0;
+            }
+            //判断是否有子节点
+            if (node[opt.children] && node[opt.children].length > 0) {
+                //所有子节点
+                for (var k = 0; k < node[opt.children].length; k++) {
+                    node[opt.children][k][opt.parent] = node[opt.key];
+                    node[opt.children][k].Level = node.Level + 1;
+                    node[opt.children][k].parentNode = node;
+                }
+                appenChildren(node[opt.children]);
+            }
+            if(node.hasOwnProperty("parentNode"))
+                delete node.parentNode;
+            if(node.hasOwnProperty(opt.children))
+                delete node[opt.children];
+            NodeList.push(node);
+        }
+    }
+    appenChildren(treeNodes);
+    return NodeList;
+}
+function download(href, title) {
+	    var a = document.createElement('a');
+	    a.setAttribute('href', href);
+	    a.setAttribute('download', title);
+	    a.click();
+	}
+function secondToDate(result) {
+    var h = Math.floor(result / 3600) < 10 ? '0'+Math.floor(result / 3600) : Math.floor(result / 3600);
+    var m = Math.floor((result / 60 % 60)) < 10 ? '0' + Math.floor((result / 60 % 60)) : Math.floor((result / 60 % 60));
+    var s = Math.floor((result % 60)) < 10 ? '0' + Math.floor((result % 60)) : Math.floor((result % 60));
+    var str="";
+    if(h>0){
+    		str += (h + "时");
+    }
+    if(m>0){
+    		str += (m + "分");
+    }
+    if(s>0){
+		str += (s + "秒");
+    }
+    return str;
+}
+function isPoneAvailable(str) {
+    var myreg=/^[1][3,4,5,7,8,6][0-9]{9}$/;
+    if (!myreg.test(str)) {
+        return false;
+    } else {
+        return true;
+    }
+}
+function move(obj){
+
+    $(obj).mousedown(function(e){
+       $(obj).css("cursor","move");//改变鼠标指针样式
+        var x =parseInt(e.pageX - $(obj).offset().left); //获取div的当前X坐标
+        var y =parseInt(e.pageY - $(obj).offset().top);  //获取div的当前X坐标
+        $(document).bind("mousemove",function(ev){//鼠标移动事件
+            var ox = Math.abs(ev.pageX - x);
+            var oy = Math.abs(ev.pageY-y);
+                $(obj).css({
+                   left:ox+"px",//移动后的left的值
+                   top:oy + "px" //移动后y的值
+            });
+        });
+    })
+       $(document).mouseup(function(){
+           $(obj).css("cursor","default");//还原鼠标指针样式
+            $(this).unbind("mousemove");
+      });
+  }
+function getFileType(mimeType){
+	if(mimeType.indexOf("video") != -1){
+		return "VIDEO";
+	}else if(mimeType.indexOf("image") != -1){
+		return "IMAGE";
+	}else if(mimeType.indexOf("audio") != -1){
+		return "AUDIO";
+	}else if(mimeType.indexOf("application") !=-1){
+		return getOfficeType(mimeType);
+	}else {
+		return "OTHER";
+	}
+}
+function getType(ext){
+	var value =6;//默认其他
+	for (var i = 0; i < Constants.FILETYPE.length; i++) {
+		 var obj = Constants.FILETYPE[i];
+		 if(obj.fileType.indexOf(ext)!=-1){
+			 value = obj.value;
+			 break;
+		 }
+	}
+	return value;
+}
+function intersect() {
+    var result = new Array();
+    var obj = {};
+    for (var i = 0; i < arguments.length; i++) {
+        for (var j = 0; j < arguments[i].length; j++) {
+            var str = arguments[i][j];
+            if (!obj[str]) {
+                obj[str] = 1;
+            }
+            else {
+                obj[str]++;
+                if (obj[str] == arguments.length)
+                {
+                    result.push(str);
+                }
+            }//end else
+        }//end for j
+    }//end for i
+    return result;
+}
+Array.prototype.duplicateId = function(){
+	var temp=[];
+	for (var i = 0; i < this.length; i++) {
+		var value = this[i]["id"];
+		if(temp.getObj('id',value) == -1){
+			temp.push(this[i]);
+		}
+	}
+	return temp;
+}
+	</script>
+</body>
+</html>

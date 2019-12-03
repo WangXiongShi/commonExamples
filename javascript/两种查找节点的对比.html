@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		// console.time('querySelector');
+		// for (var i = 0; i < 100000; i++) {
+		//   document.querySelector("#wp_editbtns");
+		// }
+		// console.timeEnd('querySelector');
+		// //querySelector: 519ms
+
+		// console.time('getElementById');
+		// for (var i = 0; i < 100000; i++) {
+		//   document.getElementById("wp_editbtns");
+		// }
+		// console.timeEnd('getElementById');
+		// //getElementById: 491ms
+
+		console.time('querySelectorAll');
+		for (var i = 0; i < 10000; i++) {
+		  document.querySelectorAll(".menu-top");
+		}
+		console.timeEnd('querySelectorAll');
+		//querySelectorAll: 1781ms
+
+		console.time('getElementsByClassName');
+		for (var i = 0; i < 10000; i++) {
+		  document.getElementsByClassName("menu-top");
+		}
+		console.timeEnd('getElementsByClassName');
+		//getElementsByClassName: 54ms
+	</script>
+</body>
+</html>

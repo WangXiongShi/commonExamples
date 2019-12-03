@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		/*.box1{
+
+			float: left;
+			width: 100px;
+			height: 100px;
+			background-color: #ccc;
+		}
+		.box2{
+			clear:left;
+			float: left;
+			margin-top: 10px;
+			width: 100px;
+			height: 100px;
+			background-color: #368;
+		}
+		.box3{
+			margin-left: 110px;
+			width: 200px;
+			height: 210px;
+			background-color: #000;
+		}*/
+
+
+		div{background:#CCCCCC;
+			/*transition:.3s all;*/
+			transition-duration:.3s;
+			transition-timing-function:all;
+		}
+		#first{float:left;width:100px; height:150px;}
+		#second{clear:left;float:left;margin-top:10px;width:100px;height:150px}
+		#third{ width:200px;margin-left:110px;height:310px}
+		div:hover{
+			transform:scale(1.05);
+		}
+	</style>
+</head>
+<body>
+	<!-- <div class="box1"></div> 
+	<div class="box2"></div>
+	<div class="box3"></div>  -->
+
+	<div id="first"></div>  
+	<div id="second"></div>   
+	<div id="third"></div>
+	<input type="date">
+	<input type="time">
+    <center><big>2</big></center>
+    <font>1</font>
+    <s>22</s>
+    <tt>我是1我i今晚i</tt>
+    <u>11111</u>
+		<!-- <script type="text/javascript">
+		function zoom(id,x,y){ // 设置缩放函数参数：容器id、横向缩放倍数、纵向缩放倍数（等比例缩放时也可以设定一个参数）
+		var obj=document.getElementById(id); // 获取元素对象值
+		var dW=obj.clientWidth; // 获取元素宽度
+		var dH=obj.clientHeight; // 获取元素高度
+		//var oTop=obj.offsetTop;
+		//var oLeft=obj.offsetLeft;
+		obj.onmouseover=function(){ // 鼠标移入
+		this.style.width=dW*x+"px"; // 横向缩放
+		this.style.height=dH*y+"px"; // 纵向缩放
+		this.style.backgroundColor="#f00"; // 设置调试背景
+		this.style.zIndex=1; // 设置z轴优先
+
+		}
+		obj.onmouseout=function(){ // 鼠标移出，设回默认值
+		this.style.width="";
+		this.style.height="";
+		this.style.padding="";
+		this.style.backgroundColor="";
+		this.style.zIndex="";
+		}
+		}
+		zoom("first",1.25,1.25);
+		zoom("second",1.25,1.25);
+		zoom("third",1.25,1.25);
+	</script> -->
+</body>
+</html>

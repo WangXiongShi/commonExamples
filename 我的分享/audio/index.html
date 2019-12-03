@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>html5 音频播放</title>
+	<link rel="stylesheet" type="text/css" href="css/audio.css">
+</head>
+<body style="height: 999px">
+	<div class="audio-box">
+		<div class="audio-container">
+			<div class="audio-view">
+				<div class="audio-cover" ></div>
+				<div class="audio-body">
+					<h3 class="audio-title">未知歌曲</h3>
+					<div class="audio-backs">
+						<div class="audio-this-time">00:00</div>
+						<div class="audio-count-time">00:00</div>
+						<div class="audio-setbacks">
+							<i class="audio-this-setbacks">
+								<span class="audio-backs-btn"></span>
+							</i>
+							<span class="audio-cache-setbacks">
+							</span>
+						</div>
+					</div>
+				</div>
+				<div class="audio-btn">
+					<div class="audio-select">
+						<div class="audio-prev"></div>
+						<div class="audio-play"></div>
+						<div class="audio-next"></div>
+						<div class="audio-menu"></div>
+						<div class="audio-volume"></div>
+					</div>
+					<div class="audio-set-volume">
+						<div class="volume-box">
+							<i><span></span></i>
+						</div>
+					</div>
+					<div class="audio-list">
+						<div class="audio-list-head">
+							<p>歌单</p>
+							<span class="menu-close">关闭</span>
+						</div>
+						<ul class="audio-inline">
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+<script type="text/javascript" src="js/audio.js"></script>
+<script type="text/javascript">
+$(function(){
+	var song = [
+		{
+			'cover' : 'images/cover2.jpg',//歌曲头像图片
+			'src' : 'http://jq22.qiniudn.com/2_01.mp3',//歌曲地址
+			'title' : '1'//歌曲名字
+		},
+		{
+			'cover' : 'images/cover.png',
+			'src' : 'http://jq22.qiniudn.com/the.mp3',
+			'title' : 'number one'
+		},
+		{
+			'cover' : 'http://p1.music.126.net/DutoVeiAsyvI5G4trfAntQ==/109951163010165481.jpg?param=130y130',
+			'src' : 'http://m10.music.126.net/20171019220412/f3ca49862c0d3ef8e0a6c32affd20b05/ymusic/0523/76c2/2b74/9ee1009c4b6a6b058ff2b175841fd8ed.mp3',
+			'title' : '我最亲爱的'
+		},
+		{
+			'cover' : 'http://p1.music.126.net/BZNpKSKkPTTv5ZnxdYAdUQ==/5850501371402948.jpg?param=130y130',
+			'src' : 'http://m10.music.126.net/20171019220622/8e22301bd2a42287d8d62e7070afe18c/ymusic/8e37/9596/3332/7c3bda916cb49652eb6eb7f971e53a7d.mp3',
+			'title' : '旅行的意义'
+		},
+		{
+			'cover' : 'http://p1.music.126.net/iTjU6EA_bFKtdqwBG49e9A==/17830780067954948.jpg?param=130y130',
+			'src' : 'http://m10.music.126.net/20171019221135/5e0c3a29541ee8040f98c8b15e62f1ed/ymusic/38de/a215/58f3/c17fa47e3a810f6e24fc736ef38bbd8a.mp3',
+			'title' : '理想三句'
+		},
+		{
+			'cover' : 'http://p1.music.126.net/06Yhj36Qu3ZCQJklc9MNKg==/7980255395852522.jpg?param=130y130',
+			'src' : 'http://m10.music.126.net/20171019215636/26248b073cd1e572ff71eaff55e54927/ymusic/f7dc/4b33/1dd9/3f37232270e4a05934179e6913efa47f.mp3',
+			'title' : '听妈妈的话'
+		},
+		{
+			'cover' : 'http://p1.music.126.net/i2YqeMpR2DPuj15M-B1skA==/5816416510959096.jpg?param=130y130',
+			'src' : 'http://m10.music.126.net/20171020095423/ed5b0f9706f6ac9e2cb58e258530f614/ymusic/13ea/1ec3/bc86/f124b23dc2483683d410dd018797712e.mp3',
+			'title' : '丑八怪'
+		}
+	];
+
+	var audioFn = audioPlay({
+		song : song, //可填写参数null ,会alert文本提示并退出
+		autoPlay : true  //是否立即播放第一首，autoPlay为true且song为空，会alert文本提示并退出
+	});
+
+	/* 向歌单中添加新曲目，第二个参数true为新增后立即播放该曲目，false则不播放 */
+	// audioFn.newSong({
+	// 	'cover' : 'images/cover5.jpg',
+	// 	'src' : 'http://webmp3-1253691995.costj.myqcloud.com/audio/baab.mp3',
+	// 	'title' : 'B.A.A.B'
+	// },false);
+
+	/* 暂停播放 */
+	// audioFn.stopAudio();
+
+	/* 开启播放 */
+	// audioFn.playAudio();
+
+	/* 选择歌单中下标为3的曲目(下标是从0开始的)，第二个参数true立即播放该曲目，false则不播放 */
+	//audioFn.selectMenu(3,true);
+
+	/* 查看歌单中的曲目 */
+	//console.log(audioFn.song);
+
+	/* 当前播放曲目的对象 */
+	//console.log(audioFn.audio);
+});
+	
+
+	
+</script>
+</html>

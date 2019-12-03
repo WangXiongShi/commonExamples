@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		
+		// 1:那个不属于string的方法（	）
+
+		// A：charAt（）	B：substring（）	C：toUpperCase（）	D：length
+
+
+
+
+		// 2:分别输出什么
+
+		// var s  = new String('hello');
+		// var s2 = new String('hello');
+
+		// var s3 = 'hello';
+
+		// console.log(s === s2); // false
+
+		// console.log(s == s2); // false
+
+		// console.log(s === s3); // false
+
+		// console.log(s == s3); // true
+
+		// console.log(typeof s3);
+		// console.log(typeof s); 
+
+
+
+		//3:在下面的代码中，数字 1-4 会以什么顺序输出？为什么会这样输出？
+
+		// (function() {
+
+		// 	console.log(1); 
+
+		// 	setTimeout(function(){console.log(2)}, 0); 
+
+		// 	setTimeout(function(){console.log(3)}, 0); 
+
+		// 	console.log(4);
+
+		// })();
+
+		// 1 4 2 3
+
+
+
+		//4:
+
+		// for(var i = 0; i < 5; i++) {
+			
+		// 	setTimeout(function() {
+		// 		console.log(i); 
+		// 	},1000);
+		
+		// }
+
+		// // 5次  5
+
+
+		// for(var i = 0; i < 5; i++) {
+		// 	(function(i) {
+		// 		setTimeout(function() {
+		// 			console.log(i); 
+		// 		}, 1000);
+		// 	})(i)
+		// }
+
+
+		//定义了两个不同的对象。也不是指向同一个对象
+		//如果等号两边是对象或者对象的函数，则比较地址是否相等（即判断两者是否引用的同一对象）
+
+
+
+
+		// if ([]) {
+		// 	console.log('[] is true');
+		// }else{
+		// 	console.log('no');
+		// }
+
+		// console.log([] == false);
+		// console.log([] === false);
+
+
+	</script>
+</body>
+</html>

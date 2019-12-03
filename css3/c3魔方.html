@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>魔方</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        .wrapper{
+            width:1000px;
+            height:600px;
+            /*background:#eee;*/
+            margin:20px auto;
+            perspective: 1000px;
+            -webkit-transform-style: preserve-3d;
+            -moz-transform-style: preserve-3d;
+            -ms-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+            text-align: center;
+            transition: all linear .7s;
+            position:relative;
+        }
+        .box{
+            -webkit-transform-style: preserve-3d;
+            -moz-transform-style: preserve-3d;
+            -ms-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+            position:absolute;
+            width:200px;
+            height:200px;
+            top:200px;
+            left:400px;
+            transition: all linear .7s;
+            animation:scaleWidth 10s linear  infinite ;
+        }
+        @keyframes scaleWidth{
+            0%{transform-origin:center;transform: rotateZ(0deg) rotateX(0deg) rotateY(0deg);}
+            100%{transform-origin:center;transform: rotateZ(-360deg) rotateX(-360deg) rotateY(-360deg);}
+        }
+        .box div{
+            width:198px;
+            height:198px;
+            text-align:center;
+            line-height: 200px;
+            font-size:50px;
+            position: absolute;
+            /*opacity: .2;*/
+            animation:cwidth linear 10s ;
+            overflow: hidden;
+        }
+        @keyframes cwidth{
+           0%{width:0; height:0;}
+            100%{width:198px; height:198px;} 
+        }
+        .box div span{
+            display: block;
+            width: 62px;
+            height:62px;
+            border:1px solid #000;
+            margin:1px;
+            float: left;
+        }
+        .wrapper .box div:nth-of-type(1){
+            left:0;
+            top:-200px;
+            transform-origin: bottom;
+            transform:rotateX(90deg);
+        }
+        .wrapper .box div:nth-of-type(1) span{
+            background-color:red;
+        }
+        .wrapper .box div:nth-of-type(2){
+            left:0;
+            top:0px;
+            transform: translateZ(0px);
+        }
+        .wrapper .box div:nth-of-type(2) span{
+            background-color:yellow;
+        }
+        .wrapper .box div:nth-of-type(3){
+            left:0;
+            top:200px;
+            transform-origin: top;
+            transform: rotateX(-90deg);
+        }
+        .wrapper .box div:nth-of-type(3) span{
+            background-color:green;
+        }
+        .wrapper .box div:nth-of-type(4){
+            left:-200px;
+            top:0px;
+            transform-origin: right;
+            transform: rotateY(-90deg);
+        }
+        .wrapper .box div:nth-of-type(4) span{
+            background-color:deeppink;
+        }
+        .wrapper .box div:nth-of-type(5){
+            left:200px;
+            top:0px;
+            transform-origin: left;
+            transform: rotateY(90deg);
+        }
+        .wrapper .box div:nth-of-type(5) span{
+            background-color:cyan;
+        }
+        .wrapper .box div:nth-of-type(6){
+            left:0px;
+            top:0px;
+            transform: translateZ(-200px)
+        }
+        .wrapper .box div:nth-of-type(6) span{
+            background-color:purple;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="box">
+            <div>
+                <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span>
+            </div>
+            <div>
+                <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span>
+            </div>
+            <div>
+                <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span>
+            </div>
+            <div>
+                <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span>
+            </div>
+            <div>
+                <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span>
+            </div>
+            <div>
+                <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span>
+            </div>
+        </div>
+    </div>
+    <script>
+
+
+
+    </script>
+</body>
+</html>

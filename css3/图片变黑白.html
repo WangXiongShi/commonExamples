@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		img {/*图片变黑白*/
+	    filter: grayscale(100%);
+	    -webkit-filter: grayscale(100%);
+	    -moz-filter: grayscale(100%);
+	    -ms-filter: grayscale(100%);
+	    -o-filter: grayscale(100%);
+	}
+	body:before {/*顶部阴影效果*/
+    content: "";
+    position: fixed;
+    top: -10px;
+    left: 0;
+    width: 100%;
+    height: 10px;
+  
+    -webkit-box-shadow: 0px 0px 10px rgba(0,0,0,.8);
+    -moz-box-shadow: 0px 0px 10px rgba(0,0,0,.8);
+    box-shadow: 0px 0px 10px rgba(0,0,0,.8);
+     
+    z-index: 100;
+}
+.blur { /*模糊文本*/
+   color: transparent;   
+   text-shadow: 0 0 5px rgba(0,0,0,0.5);
+}
+	</style>
+</head>
+<body>
+	<img src="images/3.png" alt="1" title="加拿大">
+	<div></div>
+	<p class="blur">     1. 获取子节点
+        
+                var 子节点的伪数组 = 父亲.childNodes; 
+                
+        2. 获取子元素
+        
+                var 子元素的伪数组 = 父亲.children; 
+                
+        3. 获取属性节点
+        
+                var idNode = ul.getAttributeNode("id"); 
+                
+        4. 获取下一个兄弟节点 
+        
+                var node =  xxx.nextSibling;
+                
+        5. 获取下一个兄弟元素 
+                
+                var ele =  xxx.nextElementSibling;
+                
+        6. 获取上一个兄弟节点
+        
+                var node =  xxx.previousSibling;
+                
+        7. 获取上一个兄弟元素 
+                
+                var ele =  xxx.previousElementSibling;
+        
+        8. 追加子节点 
+        
+                father.appendChild(demo);</p>
+</body>
+</html>

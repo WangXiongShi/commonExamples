@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <!--<link rel="stylesheet" type="text/css" href="stylesheets/screen.css"/>-->
+    <style>
+        *{padding: 0;margin: 0}
+        body{font: 14px/1.5 microsoft yahei;}
+        h1{font-size: 14px;}
+        ul li{list-style: none;}
+        .item{
+            display: flex;
+            display: -webkit-flex;
+            justify-content: center;
+            -webkit-justify-content: center;
+            align-items: center;
+            -webkit-align-items: center;
+            border: 1px solid;
+        }
+        .item li{
+            padding: 15px;
+            margin: 10px;
+            border: 1px dashed;
+        }
+
+        .item2{
+            display: flex;
+            display: -webkit-flex;
+            border: 1px solid;
+            height: 100px;
+        }
+        .item2 li{
+            border: 1px dashed;
+            padding: 10px;
+        }
+
+        .item3{
+            display: flex;
+            display: -webkit-flex;
+            border: 1px solid;
+        }
+        .item3 li{
+            border: 1px dashed;
+            padding: 10px;
+            flex-grow: 1;
+            -webkit-flex-grow: 1;
+        }
+
+        .item4{
+            display: flex;
+            display: -webkit-flex;
+            border: 1px solid;
+        }
+        .item4 li{
+            border: 1px dashed;
+            flex: 1;
+            -webkit-flex: 1;
+        }
+
+        .item5 li{
+            border: 1px dashed;
+            align-items: center;
+            -webkit-align-items: center;
+            display: flex;
+            display: -webkit-flex;
+            border: 1px solid;
+            height: 200px;
+        }
+        .item5 li .left{
+            width: 70px;
+            height: 80px;
+            border: 1px solid;
+            margin: 10px;
+        }
+        .item5 li .left img{
+            width: 100%;
+            height: 100%;
+        }
+        .item5 li .right{
+            flex: 1;
+            -webkit-flex: 1;
+        }
+    </style>
+</head>
+<body>
+<h1>①、子元素无高度宽度的情况下垂直水平居中</h1>
+<ul class="item">
+    <li>a</li>
+    <li>b</li>
+    <li>c</li>
+</ul>
+<br/>
+
+<h1>②、子元素不设置高度让高度自适应父元素-直接让父元素flex默认子元素的高度就是与父元素高度一致的</h1>
+<ul class="item2">
+    <li>a</li>
+    <li>b</li>
+    <li>c</li>
+</ul>
+<br/>
+
+<h1>③、子元素不设置宽度让宽度自适应父元素</h1>
+<ul class="item3">
+    <li>a</li>
+    <li>b--子元素分配的宽度会根据内容的变化而变化，子元素分配的宽度会根据内容的变化而变化子元素分配的宽度会根据内容的变化而变化</li>
+    <li>c</li>
+</ul>
+<br/>
+
+<h1>④、子元素均分并且不管元素内的内容有多少-都是均分的</h1>
+<ul class="item4">
+    <li>a--不管元素内的内容有多少,子元素的宽度都是相等的，不管元素内的内容有多少,子元素的宽度都是相等的，不管元素内的内容有多少,子元素的宽度都是相等的</li>
+    <li>b</li>
+    <li>c</li>
+</ul>
+<br/>
+
+<h1>⑤、常用布局-列表作图有文字（然后文字垂直居中）</h1>
+<ul class="item5">
+    <li>
+        <div class="left">
+            <img src="images/1.jpg" alt=""/>
+        </div>
+        <div class="right">
+            <p>这是一段文字，要垂直居中哦~~~不管文字有多少都是垂直居中的，不管文字有多少都是垂直居中的，不管文字有多少都是垂直居中的</p>
+        </div>
+    </li>
+</ul>
+</body>
+</html>

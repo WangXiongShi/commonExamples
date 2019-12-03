@@ -1,0 +1,316 @@
+*
+{
+	margin: 0;
+	padding: 0;
+}
+BODY
+{
+	font-size: 12px;
+	color: #000000;
+	text-align: left;
+	line-height: 20px;
+	padding-bottom: 0;
+	padding-top: 0;
+	/*+placement:shift 12;*/
+	position: relative;
+	left: 12;
+	top: 0;
+}
+A
+{
+	text-decoration: none;
+	font-size: 12px;
+	color: #000000;
+}
+#wrap
+{
+	width: 1000px;
+	margin: 63px;
+}
+#tel
+{
+	width: 1000px;
+	height: 25px;
+	background-image: url(images/index_ly_03.gif);
+	background-repeat: repeat-x;
+	font-weight: bold;
+}
+.telDIV
+{
+	float: left;
+	margin-left: 25px;
+	line-height: 25px;
+}
+.ad
+{
+	height: 98px;
+	width: 1000px;
+}
+#fenlei
+{
+	height: 105px;
+	background-image: url(images/index_ly_09.gif);
+	background-repeat: repeat-x;
+}
+.fenlei_title
+{
+	width: 989px;
+	height: 11px;
+	margin: 8px auto 0;
+}
+.fenlei_contect
+{
+	width: 989px;
+	height: 76px;
+	margin-top: 10px;
+}
+.fenlei_button
+{
+	background-image: url(images/index_ly_16.gif);
+	background-repeat: repeat-x;
+	border: 1px solid #B47C14;
+	margin-left: 10px;
+	float: left;
+	line-height: 17px;
+	padding: 0 3px;
+}
+.mukuai1
+{
+	width: 368px;
+	margin-top: 5px;
+	float: left;
+}
+.mukuai2
+{
+	width: 313px;
+	float: left;
+	margin-top: 5px;
+	margin-left: 3px;
+}
+.tuijian_title
+{
+	height: 42px;
+}
+.tuijian_title1
+{
+	height: 23px;
+	background-image: url(images/index_ly_20.gif);
+}
+.tuijian_title2
+{
+	width: 367px;
+	height: 19px;
+	border-right: 1px solid #B08536;
+}
+.tuijian_contect
+{
+	width: 366px;
+	height: 208px;
+	background-image: url(images/index_ly_27.gif);
+	background-repeat: repeat-x;
+	border-left: 1px solid #B08536;
+	border-right: 1px solid #B08536;
+	border-bottom: 1px solid #B08536;
+}
+.tuijian_tab
+{
+	width: 345px;
+	height: 208px;
+	margin: 0 auto;
+}
+.tuijian_td1
+{
+	width: 265px;
+	height: 20px;
+	text-indent: 15px;
+	border-top: 1px dashed #B7B7B7;
+}
+.tuijian_td2
+{
+	width: 80px;
+	height: 20px;
+	color: #C82100;
+	font-size: 14px;
+	font-weight: bold;
+	border-top: 1px dashed #B7B7B7;
+}
+.tuijian_more
+{
+	margin-top: 3px;
+	margin-left: 300px;
+}
+.guonei_title
+{
+	height: 24px;
+	background-image: url(images/index_ly_22.gif);
+}
+.guonei_contect
+{
+	width: 311px;
+	height: 226px;
+	border-left: 1px solid #959698;
+	border-right: 1px solid #959698;
+	border-bottom: 1px solid #959698;
+}
+.guonei_tab
+{
+	width: 311px;
+	height: 226px;
+}
+.guonei_td1
+{
+	height: 20px;
+	background-color: #ECF2F9;
+	text-indent: 10px;
+}
+.guonei_td2
+{
+	height: 20px;
+	text-indent: 10px;
+}
+.guonei_more
+{
+	margin-top: 3px;
+	margin-left: 270px;
+}
+.zhoumo_title
+{
+	height: 24px;
+	background-image: url(images/index_ly_24.gif);
+}
+.zhoumo_contect
+{
+	width: 311px;
+	height: 226px;
+	border-left: 1px solid #959698;
+	border-right: 1px solid #959698;
+	border-bottom: 1px solid #959698;
+	background-image: url(images/index_ly_31.gif);
+	background-repeat: repeat-x;
+}
+.zhoumo_tab
+{
+	width: 311px;
+	height: 226px;
+}
+.zhoumo_td1
+{
+	width: 21px;
+	height: 20px;
+	text-indent: 15px;
+}
+.zhoumo_td2
+{
+	width: 280px;
+	height: 20px;
+	text-indent: 10px;
+}
+.guoji_title
+{
+	height: 24px;
+	background-image: url(images/index_ly_40.gif);
+}
+.guoji_contect
+{
+	width: 366px;
+	height: 227px;
+	border-left: 1px solid #959698;
+	border-right: 1px solid #959698;
+	border-bottom: 1px solid #959698;
+}
+.guoji_tab
+{
+	width: 366px;
+	height: 226px;
+}
+.guoji_td1
+{
+	width: 21px;
+	height: 20px;
+	text-indent: 15px;
+}
+.guoji_td2
+{
+	width: 345px;
+	height: 20px;
+	text-indent: 10px;
+}
+.guoji_more
+{
+	margin-top: 3px;
+	margin-left: 320px;
+}
+.teshu_title
+{
+	height: 24px;
+	background-image: url(images/index_ly_41.gif);
+}
+.teshu_contect
+{
+	width: 311px;
+	height: 227px;
+	border-left: 1px solid #B7C4D3;
+	border-right: 1px solid #B7C4D3;
+	border-bottom: 1px solid #B7C4D3;
+}
+.teshu_tab
+{
+	width: 300px;
+	height: 227px;
+	margin: 0 auto;
+}
+.teshu_td
+{
+	height: 20px;
+	text-indent: 15px;
+	border-top: 1px dashed #B7B7B7;
+}
+.teshu_more
+{
+	margin-top: 5px;
+	margin-left: 270px;
+}
+.qita_left
+{
+	width: 6px;
+	height: 251px;
+	float: left;
+}
+.qita_center
+{
+	width: 300px;
+	height: 251px;
+	float: left;
+	background-image: url(images/index_ly_45.gif);
+	background-repeat: repeat-x;
+}
+.qita_right
+{
+	width: 7px;
+	height: 251px;
+	float: left;
+}
+.qita_title
+{
+	float: left;
+	margin-top: 5px;
+	margin-left: 5px;
+}
+.qita_more
+{
+	float: left;
+	margin-top: 5px;
+	margin-left: 130px;
+}
+.qita_tab
+{
+	width: 270px;
+	height: 200px;
+	margin: 30px auto 21px;
+}
+.qita_td
+{
+	height: 20px;
+	text-indent: 10px;
+	border-top: 1px dashed #94B0D2;
+}

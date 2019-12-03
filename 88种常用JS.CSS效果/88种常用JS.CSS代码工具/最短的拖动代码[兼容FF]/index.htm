@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head><meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<script language="JavaScript" type="text/javascript">
+var x,y
+var drag_=false
+var D=new Function('obj','return document.getElementById(obj);')
+var IE=new Function('','if(navigator.appName.indexOf("Explorer")>=0)return 1;if(navigator.appName.indexOf("Netscape")>=0)return 2')
+function Move_obj(obj){//1
+                     D(obj).onmousedown=function(e){drag_=true//4
+                              with(this){style.position="absolute";temp1=offsetLeft;temp2=offsetTop;//5
+                              if(IE()==1){x=event.clientX;y=event.clientY//6
+                                  document.onmousemove=function(e){//7
+                                        if(drag_==false)return false
+                                     with(this){style.left=temp1+event.clientX-x+"px";style.top=temp2+event.clientY-y+"px"}
+                                     }//7
+                              }//6
+                              if(IE()==2){x=e.pageX;y=e.pageY;//8
+                                  document.onmousemove=function(e){//9
+                                        if(drag_==false)return false
+                                     with(this){style.left=temp1+e.pageX-x+"px";style.top=temp2+e.pageY-y+"px"}
+                                     }//9
+                              }//8
+                        }//5
+           document.onmouseup=new Function("drag_=false")
+                     }//4
+}//1
+</script>
+<body>
+<div id="test" style="background-color:#0099CC;width:200px"onmouseover='Move_obj("test")'>
+<div>
+<ul>
+<li>fdsaf</li>
+<li>fdsafd</li>
+</ul>
+</div>
+<p>fdsaf</p>
+<div>
+<ul>
+<li><a href="#">0fdasfd</a></li>
+</ul>
+</div>
+</div>

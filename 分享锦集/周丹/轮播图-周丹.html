@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <style>
+            #radio{ position: relative; margin:0 auto; width: 1280px; height: 800px;border: 1px solid red;}
+            .radio_style{border: 5px solid rgb(14,73,102); transition:all 1s; width: 200px; height: 200px;}
+            .radio_style>div{opacity: 0.3; border-radius: 50%;background: black;margin:0 auto;margin-top: 150px;transition:all 1s;}
+            #radio1{
+                transition:all 1s;
+                background: #CCCCCC;
+                position: absolute;
+                left:150px;
+                top: 40%;
+                width: 200px;
+                height: 150px;
+                z-index: 1
+            }
+            #radio2{
+                transition:all 1s;
+                background: #CCCCCC;
+                position: absolute;
+                left:250px;
+                top: 36%;
+                width: 250px;
+                height: 200px;
+                z-index: 2
+            }
+            #radio3{
+                transition:all 1s;
+                background: #CCCCCC;
+                position: absolute;
+                left:400px;
+                top: 25%;
+                width: 500px;
+                height: 350px;
+                z-index: 3
+            }
+            #radio4{
+                transition:all 1s;
+                background: #CCCCCC;
+                position: absolute;
+                left:800px;
+                top: 36%;
+                width: 250px;
+                height: 200px;
+                z-index: 2
+            }
+            #radio5{
+                transition:all 1s;
+                background: #CCCCCC;
+                position: absolute;
+                left:950px;
+                top:40%;
+                width: 200px;
+                height: 150px;
+                z-index: 1
+            }
+            #radio1>div{width: 200px ;margin-top: 200px;height:5px }
+            #radio2>div{width: 250px;margin-top: 300px;height: 10px; }
+            #radio3>div{width: 500px;margin-top: 450px;height: 20px }
+            #radio4>div{width: 250px;margin-top: 300px;height: 10px }
+            #radio5>div{width: 200px;margin-top: 200px; height: 5px}
+
+        </style>
+    </head>
+    <body>
+        <div id="radio">
+            <div class="radio_style" id="radio1" onclick="fun1();"><div></div></div>
+            <div class="radio_style" id="radio2" onclick="fun2()"><div></div></div>
+            <div class="radio_style" id="radio3" onclick="fun3()"><div></div></div>
+            <div class="radio_style" id="radio4" onclick="fun4()"><div></div></div>
+            <div class="radio_style" id="radio5" onclick="fun5()"><div></div></div>
+        </div>
+        <script type="text/javascript" src="js.js"></script>
+   
+
+<script type="text/javascript">
+function $(id){
+    return document.getElementById(id);
+}
+function fun1(){
+    $("radio1").style.left="400px";
+    $("radio1").style.top="25%";
+    $("radio1").style.width="500px";
+    $("radio1").style.height="350px";
+    $("radio1").style.zIndex="3";
+    $("radio1").firstElementChild.style.marginTop="450px";
+    $("radio1").firstElementChild.style.width="500px";
+    $("radio1").firstElementChild.style.height="20px";
+    $("radio2").style.left="800px";
+    $("radio2").style.top="36%";
+    $("radio2").style.width="250px";
+    $("radio2").style.height="200px";
+    $("radio2").style.zIndex="2";
+    $("radio2").firstElementChild.style.marginTop="300px";
+    $("radio2").firstElementChild.style.width="250px";
+    $("radio2").firstElementChild.style.height="10px";
+    $("radio3").style.left="950px";
+    $("radio3").style.top="40%";
+    $("radio3").style.width="200px";
+    $("radio3").style.height="150px";
+    $("radio3").style.zIndex="1";
+    $("radio3").firstElementChild.style.marginTop="200px";
+    $("radio3").firstElementChild.style.width="200px";
+    $("radio3").firstElementChild.style.height="5px";
+    $("radio5").style.left="250px";
+    $("radio5").style.top="36%";
+    $("radio5").style.width="250px";
+    $("radio5").style.height="200px";
+    $("radio5").style.zIndex="2";
+    $("radio5").firstElementChild.style.marginTop="300px";
+    $("radio5").firstElementChild.style.width="250px";
+    $("radio5").firstElementChild.style.height="10px";
+    $("radio4").style.left="150px";
+    $("radio4").style.top="40%";
+    $("radio4").style.width="200px";
+    $("radio4").style.height="150px";
+    $("radio4").style.zIndex="1";
+    $("radio4").firstElementChild.style.marginTop="200px";
+    $("radio4").firstElementChild.style.width="200px";
+    $("radio4").firstElementChild.style.height="5px";
+
+}
+function fun2(){
+    $("radio2").style.left="400px";
+    $("radio2").style.top="25%";
+    $("radio2").style.width="500px";
+    $("radio2").style.height="350px";
+    $("radio2").style.zIndex="3";
+    $("radio2").firstElementChild.style.marginTop="450px";
+    $("radio2").firstElementChild.style.width="500px";
+    $("radio2").firstElementChild.style.height="20px";
+    $("radio3").style.left="800px";
+    $("radio3").style.top="36%";
+    $("radio3").style.width="250px";
+    $("radio3").style.height="200px";
+    $("radio3").style.zIndex="2";
+    $("radio3").firstElementChild.style.marginTop="300px";
+    $("radio3").firstElementChild.style.width="250px";
+    $("radio3").firstElementChild.style.height="10px";
+    $("radio4").style.left="950px";
+    $("radio4").style.top="40%";
+    $("radio4").style.width="200px";
+    $("radio4").style.height="150px";
+    $("radio4").style.zIndex="1";
+    $("radio4").firstElementChild.style.marginTop="200px";
+    $("radio4").firstElementChild.style.width="200px";
+    $("radio4").firstElementChild.style.height="5px";
+    $("radio1").style.left="250px";
+    $("radio1").style.top="36%";
+    $("radio1").style.width="250px";
+    $("radio1").style.height="200px";
+    $("radio1").style.zIndex="2";
+    $("radio1").firstElementChild.style.marginTop="300px";
+    $("radio1").firstElementChild.style.width="250px";
+    $("radio1").firstElementChild.style.height="10px";
+    $("radio5").style.left="150px";
+    $("radio5").style.top="40%";
+    $("radio5").style.width="200px";
+    $("radio5").style.height="150px";
+    $("radio5").style.zIndex="1";
+    $("radio5").firstElementChild.style.marginTop="200px";
+    $("radio5").firstElementChild.style.width="200px";
+    $("radio5").firstElementChild.style.height="5px";
+}
+function fun3() {
+    $("radio3").style.left="400px";
+    $("radio3").style.top="25%";
+    $("radio3").style.width="500px";
+    $("radio3").style.height="350px";
+    $("radio3").style.zIndex="3";
+    $("radio3").firstElementChild.style.marginTop="450px";
+    $("radio3").firstElementChild.style.width="500px";
+    $("radio3").firstElementChild.style.height="20px";
+    $("radio4").style.left="800px";
+    $("radio4").style.top="36%";
+    $("radio4").style.width="250px";
+    $("radio4").style.height="200px";
+    $("radio4").style.zIndex="2";
+    $("radio4").firstElementChild.style.marginTop="300px";
+    $("radio4").firstElementChild.style.width="250px";
+    $("radio4").firstElementChild.style.height="10px";
+    $("radio5").style.left="950px";
+    $("radio5").style.top="40%";
+    $("radio5").style.width="200px";
+    $("radio5").style.height="150px";
+    $("radio5").style.zIndex="1";
+    $("radio5").firstElementChild.style.marginTop="200px";
+    $("radio5").firstElementChild.style.width="200px";
+    $("radio5").firstElementChild.style.height="5px";
+    $("radio2").style.left="250px";
+    $("radio2").style.top="36%";
+    $("radio2").style.width="250px";
+    $("radio2").style.height="200px";
+    $("radio2").style.zIndex="2";
+    $("radio2").firstElementChild.style.marginTop="300px";
+    $("radio2").firstElementChild.style.width="250px";
+    $("radio2").firstElementChild.style.height="10px";
+    $("radio1").style.left="150px";
+    $("radio1").style.top="40%";
+    $("radio1").style.width="200px";
+    $("radio1").style.height="150px";
+    $("radio1").style.zIndex="1";
+    $("radio1").firstElementChild.style.marginTop="200px";
+    $("radio1").firstElementChild.style.width="200px";
+    $("radio1").firstElementChild.style.height="5px";
+}
+function fun4() {
+    $("radio4").style.left="400px";
+    $("radio4").style.top="25%";
+    $("radio4").style.width="500px";
+    $("radio4").style.height="350px";
+    $("radio4").style.zIndex="3";
+    $("radio4").firstElementChild.style.marginTop="450px";
+    $("radio4").firstElementChild.style.width="500px";
+    $("radio4").firstElementChild.style.height="20px";
+    $("radio5").style.left="800px";
+    $("radio5").style.top="36%";
+    $("radio5").style.width="250px";
+    $("radio5").style.height="200px";
+    $("radio5").style.zIndex="2";
+    $("radio5").firstElementChild.style.marginTop="300px";
+    $("radio5").firstElementChild.style.width="250px";
+    $("radio5").firstElementChild.style.height="10px";
+    $("radio1").style.left="950px";
+    $("radio1").style.top="40%";
+    $("radio1").style.width="200px";
+    $("radio1").style.height="150px";
+    $("radio1").style.zIndex="1";
+    $("radio1").firstElementChild.style.marginTop="200px";
+    $("radio1").firstElementChild.style.width="200px";
+    $("radio1").firstElementChild.style.height="5px";
+    $("radio3").style.left="250px";
+    $("radio3").style.top="36%";
+    $("radio3").style.width="250px";
+    $("radio3").style.height="200px";
+    $("radio3").style.zIndex="2";
+    $("radio3").firstElementChild.style.marginTop="300px";
+    $("radio3").firstElementChild.style.width="250px";
+    $("radio3").firstElementChild.style.height="10px";
+    $("radio2").style.left="150px";
+    $("radio2").style.top="40%";
+    $("radio2").style.width="200px";
+    $("radio2").style.height="150px";
+    $("radio2").style.zIndex="1";
+    $("radio2").firstElementChild.style.marginTop="200px";
+    $("radio2").firstElementChild.style.width="200px";
+    $("radio2").firstElementChild.style.height="5px";
+}
+function fun5() {
+    $("radio5").style.left="400px";
+    $("radio5").style.top="25%";
+    $("radio5").style.width="500px";
+    $("radio5").style.height="350px";
+    $("radio5").style.zIndex="3";
+    $("radio5").firstElementChild.style.marginTop="450px";
+    $("radio5").firstElementChild.style.width="500px";
+    $("radio5").firstElementChild.style.height="20px";
+    $("radio1").style.left="800px";
+    $("radio1").style.top="36%";
+    $("radio1").style.width="250px";
+    $("radio1").style.height="200px";
+    $("radio1").style.zIndex="2";
+    $("radio1").firstElementChild.style.marginTop="300px";
+    $("radio1").firstElementChild.style.width="250px";
+    $("radio1").firstElementChild.style.height="10px";
+    $("radio2").style.left="950px";
+    $("radio2").style.top="40%";
+    $("radio2").style.width="200px";
+    $("radio2").style.height="150px";
+    $("radio2").style.zIndex="1";
+    $("radio2").firstElementChild.style.marginTop="200px";
+    $("radio2").firstElementChild.style.width="200px";
+    $("radio2").firstElementChild.style.height="5px";
+    $("radio4").style.left="250px";
+    $("radio4").style.top="36%";
+    $("radio4").style.width="250px";
+    $("radio4").style.height="200px";
+    $("radio4").style.zIndex="2";
+    $("radio4").firstElementChild.style.marginTop="300px";
+    $("radio4").firstElementChild.style.width="250px";
+    $("radio4").firstElementChild.style.height="10px";
+    $("radio3").style.left="150px";
+    $("radio3").style.top="40%";
+    $("radio3").style.width="200px";
+    $("radio3").style.height="150px";
+    $("radio3").style.zIndex="1";
+    $("radio3").firstElementChild.style.marginTop="200px";
+    $("radio3").firstElementChild.style.width="200px";
+    $("radio3").firstElementChild.style.height="5px";
+}
+</script>
+ </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

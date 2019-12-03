@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+	// //两个变量之间的转换 
+	// 	var a = 50;	//定义变量a
+	// 	var b = 60;	//定义变量b
+	// 	a = a + b;	//重新赋值a 等于 a加b
+	// 	b = a - b;	//重新赋值b 等于 上一层定义过的a(新值) 减去 b(旧值)
+	// 	a = a - b;	//重新赋值a 等于 上一层定义过的a(新值) 减去 b(新值)
+	// 	console.log(a);	//a打印60
+	// 	console.log(b);	//b打印50
+
+	// var a;
+	// console.log(typeof a); //没有给他赋值, 所以是未定义, 打印undefined
+
+	// console.log(c);	//变量提升	
+	// var c = 10;		//有var 提升打印 undefined  没有var报错
+
+	// var num = prompt('请输入一个数字');	//判断输入的呃逆荣是否是数字
+	// if(isNaN(num)){
+	// 	console.log('不是数字');
+	// }else{
+	// 	console.log('是数字');
+	// }
+
+	// var a = 1;	var b = ++a + ++a;	console.log(b); //5
+	// var a = 1;	var b = a++ + ++a;	console.log(b);	//4
+	// var a = 1;	var b = a++ + a++;	console.log(b);	//3
+	// var a = 1;	var b = ++a + a++;	console.log(b);	//4
+	// var a = 1;
+	// ++a;	//先a = a + 1, 表达式返回a的值;
+	// a++;	//先返回表达式的值:a, 再a = a +1;
+
+	// 1 打印1到100
+	// for(var i=1; i<101; i++){
+	// 	console.log(i);
+	// }
+
+	// 2 打印1到100的和
+	// var a = 0;
+	// for(var i=1; i<101; i++){
+	// 	a += i;
+	// }
+	// console.log(a);
+
+	// 3 求1-100之间所有数的和,平均值
+	var a = 0, avg;
+	for(var i = 1; i <= 100; i++){
+		a += i;
+	}
+	avg = a / 100;
+	console.log(avg);
+	console.log(a);
+	// 4 求1-100之间所有偶数的和,所有奇数的和
+	// 5 本金10000元存入银行, 年利率是千分之三, 每过1年 ,将本金和利息相加作为新的本金. 计算5年后,获得的本金是多少?
+	// 6 有人想知道, 一年之内一对兔子能繁衍多少对? 于是就筑了一道围墙把一对兔子关在里面. 一直一对兔子每个月可以生一对小兔子, 而一对兔子从出生后第3个月起每月生一对小兔子. 假如一年内没有发生死亡现象, 那么, 一对兔子一年内(12个月)能繁殖成多少对?
+	// 兔子的规律为数列, 1, 1, 2, 3, 5, 8, 13, 21
+	</script>
+</body>
+</html>

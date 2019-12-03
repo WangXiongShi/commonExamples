@@ -1,0 +1,21 @@
+<html>
+<head>
+<script type="text/javascript" src="jquery-1.1.3.1.js"></script> 
+<script type="text/javascript" src="jquery.linscroll.js"></script> 
+<script type="text/javascript"> 
+$(document).ready( 
+function(){ 
+$(’#scrollContent’).setScroll( //scrollContent为滚动层的ID 
+{img:scroll_bk.gif’,width:10},//背景图及其宽度 
+{img:scroll_arrow_up.gif’,height:3},//up image 
+{img:scroll_arrow_down.gif’,height:3},//down image 
+{img:scroll_bar.gif’,height:25}//bar image 
+);});   
+</script>
+</head>
+<body>
+<div id="scrollContent" style="width:140px;overflow:hidden;height:170px;"> 
+内容 
+</div>
+</body>
+</html>

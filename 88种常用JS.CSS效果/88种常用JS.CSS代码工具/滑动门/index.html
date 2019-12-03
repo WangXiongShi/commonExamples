@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>www.14pc.com</title>
+<style type="text/css">
+* { padding:0px; margin:0px; list-style:none; }
+body { font-size:14px; font-family:Verdana, Geneva, sans-serif; }
+#nav ul.nav_left, #nav ul.nav_right, #nav ul.nav_main li, #nav ul.nav_main li.over a, #nav ul.nav_main li a span, #nav ul.nav_main li.over a span { background:url(http://www.14pc.com/14pc_images/b.gif) no-repeat; }
+#nav { background:url(http://www.14pc.com/14pc_images/b.gif) repeat-x; }
+#wrap { width:960px; margin:0 auto; height:auto; overflow:hidden; padding-top:50px; }
+#nav { background-position: 0 -178px; height:79px; width:960px; }
+#nav ul.nav_left { background-position: 0 0; float:left; width:10px; height:79px; display:inline; }
+#nav ul.nav_right { background-position:-20px 0; float:right; width:10px; height:79px; display:inline; }
+#nav ul.nav_main { float:left; display:inline; }
+#nav ul.nav_main li { background-position: -41px 0; float:left; padding:0 5px; }
+#nav ul.nav_main li a { height:40px; display:block; text-decoration:none; float:left; }
+#nav ul.nav_main li.over a { background-position: 0 -85px; }
+#nav ul.nav_main li a span { background-position: right -90px; height:22px; display:block; padding-right:30px; padding-left:20px; padding-top:18px; color:#fff; font-weight:bold; overflow:hidden; cursor:pointer; float:left; margin-left:15px; display:inline; }
+#nav ul.nav_main li.over a span { background-position: right -130px; color:#555; }
+#nav ul.nav_main li#show_0 { background:none; }/*js没有完美实现的后果.头痛- -!!*/
+</style>
+<script type="text/javascript">
+function $(id) {
+  return document.getElementById(id);
+}
+window.onload = function() {
+  var Root = $("nav_li").getElementsByTagName("li");
+  for (var i = 0; i < Root.length; i++) {
+    c = Root[i];
+    c.setAttribute("id", "show_" + i);
+    var xp = function(i) {
+      show(i);
+    };
+    c.onmouseover = dete_bibao(xp, i, c);
+  }
+}
+function show(j) {
+  for (var n = 0; n <= 6; n++) {
+    if ($("show_" + n).className != "s") {
+      $("show_" + n).className = "s";
+    }
+	
+    if (n == j) {
+      $("show_" + n).className = "over";
+    }
+  }
+}
+function dete_bibao(fn, params, obj) {
+  return function() {
+    fn.call(obj || window, params);
+  }
+}
+                  </script>
+</head>
+<body>
+<div id="wrap">
+  <div id="nav">
+    <ul class="nav_left">
+    </ul>
+    <ul class="nav_main" id="nav_li">
+      <li><a href="#"><span>首页</span></a></li>
+      <li><a href="#"><span>哼哼哈嘿</span></a></li>
+      <li><a href="#"><span>Hip-Pop</span></a></li>
+      <li><a href="#"><span>玩寂寞</span></a></li>
+      <li><a href="#"><span>社区</span></a></li>
+      <li><a href="#"><span>电影</span></a></li>
+      <li><a href="#"><span>我的地盘,听我的</span></a></li>
+    </ul>
+    <ul class="nav_right">
+    </ul>
+  </div>
+</div>
+</body>
+</html>

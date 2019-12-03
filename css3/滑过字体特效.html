@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		*{
+			margin:0;
+			padding:0;
+		}
+		body>div{
+			width: 1200px;
+			margin:0 auto;
+		}
+		ul#nav{
+			background: #11120D;
+		}
+		ul#nav li{
+			display: inline-block;
+		}
+		ul#nav li a{
+			position: relative;
+    		display: block;
+			color:#fff;
+			text-decoration: none;	
+			line-height: 50px;
+			margin:0 10px;
+		}
+		/*这里是主要的效果*/
+		a:hover {
+		    color: #00a78e;
+		}
+		a:hover::before {
+		    max-width: 100%;
+		}
+		a::before{
+			position: absolute;
+		    top: 0;
+		    left: 0;
+		    overflow: hidden;
+		    max-width: 0;
+		    height: 80%;
+		    border-bottom: 3px solid #00a78e;
+		    color: #00a78e;
+		    content: attr(data-hover);
+		    -webkit-transition: max-width 0.4s;
+		    -moz-transition: max-width 0.4s;
+		    transition: max-width 0.4s;
+		}
+
+	</style>
+</head>
+<body>
+	<div>
+		<ul id="nav">
+			<li>
+				<a href="#home" data-hover="主页">主页</a>
+			</li>
+			<li>
+				<a href="#service" data-hover="服务">服务</a>
+			</li>
+			<li>
+				<a href="#about" data-hover="关于我">关于我</a>
+			</li>
+			<li>
+				<a href="#home" data-hover="主页">主页</a>
+			</li>
+			<li>
+				<a href="#service" data-hover="服务">服务</a>
+			</li>
+			<li>
+				<a href="#about" data-hover="关于我">关于我</a>
+			</li>
+			<li>
+				<a href="#home" data-hover="主页">主页</a>
+			</li>
+			<li>
+				<a href="#home" data-hover="主页">主页</a>
+			</li>
+			<li>
+				<a href="#service" data-hover="服务">服务</a>
+			</li>
+			<li>
+				<a href="#about" data-hover="关于我">关于我</a>
+			</li>
+			<li>
+				<a href="#home" data-hover="主页">主页</a>
+			</li>
+		</ul>
+	</div>
+</body>
+</html>
