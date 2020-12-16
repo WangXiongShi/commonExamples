@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    div{
+      margin: 5px;
+      background-color: aqua;
+      width: 50%;
+      height: 100px;
+    }
+  </style>
+</head>
+
+<body>
+  <contain class="test1">
+    <a name="topAnchor"></a>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div id="top">box</div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </contain>
+  <footer>
+    <button id="backTop2">找到box</button>
+  </footer>
+  <script>
+    const backTop2 = document.getElementById("backTop2")
+    const TOP = document.getElementById("top")
+    backTop2.addEventListener("click", function (e) {
+      TOP.scrollIntoView({ behavior: "smooth" })
+    })
+
+  </script>
+</body>
+
+</html>
